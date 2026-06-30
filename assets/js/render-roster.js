@@ -20,11 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     renderRoster();
   } catch (error) {
     console.error(error);
-    grid.innerHTML = `
-      <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
-        選手データを読み込めませんでした。
-      </div>
-    `;
+    grid.textContent = "選手データを読み込めませんでした。";
   }
 
   function setupTabs() {
@@ -77,7 +73,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (visCount) visCount.textContent = members.length;
     if (totalCount) totalCount.textContent = allMembers.length;
 
-    grid.innerHTML = members.map(createCard).join("");
+    grid.innerHTML = "";
+
+    members.forEach((member) => {
+      grid.appendChild(createCard(member));
+    });
   }
 
   function createCard(player) {
@@ -94,36 +94,75 @@ document.addEventListener("DOMContentLoaded", async () => {
     const school = player.school || "";
     const photo = getPhoto(player);
 
-    return `
-      <div class="player-card" data-year="${escapeHtml(player.grade || "")}">
-        <div class="player-photo">
-          ${
-            photo
-              ? `<img src="${escapeHtml(photo)}" alt="${escapeHtml(name)}" loading="lazy">`
-              : `<div class="img-slot light">
-                   <span class="slot-label">${escapeHtml(name)}</span>
-                 </div>`
-          }
-        </div>
+    const card = document.createElement("div");
+    card.className = "player-card";
+    card.dataset.year = player.grade || "";
 
-        <div class="player-num ${role ? "" : "no-role"}">${escapeHtml(number)}</div>
+    const photoWrap = document.createElement("div");
+    photoWrap.className = "player-photo";
 
-        <div class="player-info">
-          <div class="player-pos">${escapeHtml([grade, position].filter(Boolean).join(" / "))}</div>
-          <div class="player-name">${escapeHtml(name)}</div>
+    if (photo) {
+      const img = document.createElement("img");
+      img.src = photo;
+      img.alt = name;
+      img.loading = "lazy";
+      photoWrap.appendChild(img);
+    } else {
+      const slot = document.createElement("div");
+      slot.className = "img-slot light";
 
-          ${role ? `<div class="player-role">${escapeHtml(role)}</div>` : ""}
+      const label = document.createElement("span");
+      label.className = "slot-label";
+      label.textContent = name;
 
-          ${
-            faculty || department
-              ? `<div class="player-meta">${escapeHtml([faculty, department].filter(Boolean).join(" "))}</div>`
-              : ""
-          }
+      slot.appendChild(label);
+      photoWrap.appendChild(slot);
+    }
 
-          ${school ? `<div class="player-meta">${escapeHtml(school)}</div>` : ""}
-        </div>
-      </div>
-    `;
+    const num = document.createElement("div");
+    num.className = role ? "player-num" : "player-num no-role";
+    num.textContent = number;
+
+    const info = document.createElement("div");
+    info.className = "player-info";
+
+    const pos = document.createElement("div");
+    pos.className = "player-pos";
+    pos.textContent = [grade, position].filter(Boolean).join(" / ");
+
+    const nameEl = document.createElement("div");
+    nameEl.className = "player-name";
+    nameEl.textContent = name;
+
+    info.appendChild(pos);
+    info.appendChild(nameEl);
+
+    if (role) {
+      const roleEl = document.createElement("div");
+      roleEl.className = "player-role";
+      roleEl.textContent = role;
+      info.appendChild(roleEl);
+    }
+
+    if (faculty || department) {
+      const meta = document.createElement("div");
+      meta.className = "player-meta";
+      meta.textContent = [faculty, department].filter(Boolean).join(" ");
+      info.appendChild(meta);
+    }
+
+    if (school) {
+      const schoolEl = document.createElement("div");
+      schoolEl.className = "player-meta";
+      schoolEl.textContent = school;
+      info.appendChild(schoolEl);
+    }
+
+    card.appendChild(photoWrap);
+    card.appendChild(num);
+    card.appendChild(info);
+
+    return card;
   }
 
   function getPhoto(player) {
@@ -135,14 +174,5 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     return "";
-  }
-
-  function escapeHtml(str) {
-    return String(str)
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
   }
 });
