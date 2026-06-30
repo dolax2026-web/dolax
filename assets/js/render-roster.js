@@ -1,133 +1,148 @@
-/* ================================================================
-   render-roster.js — data/players.json からロスターを動的生成
-   ================================================================ */
+document.addEventListener("DOMContentLoaded", async () => {
+  const grid = document.getElementById("rosterFullGrid");
+  const visCount = document.getElementById("visCount");
+  const totalCount = document.getElementById("totalCount");
 
-(function () {
-  function esc(s) {
-    return String(s || '')
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  if (!grid) return;
+
+  let allMembers = [];
+  let currentSection = "players";
+  let currentYear = "all";
+
+  try {
+    const res = await fetch("data/players.json");
+    if (!res.ok) throw new Error("players.json を読み込めませんでした");
+
+    const data = await res.json();
+    allMembers = Array.isArray(data) ? data : data.players || [];
+
+    setupTabs();
+    renderRoster();
+  } catch (error) {
+    console.error(error);
+    grid.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+        選手データを読み込めませんでした。
+      </div>
+    `;
   }
 
-  function playerSlug(p) {
-    if (p.grade === 4 && p.number !== null && p.number !== '') return 'grade4-' + p.number;
-    return '';
-  }
+  function setupTabs() {
+    document.querySelectorAll(".stab").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".stab").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
 
-  function buildCard(p) {
-    var isStaff = p.section === 'staff' || p.section === 'coach';
-    var slug     = isStaff ? '' : playerSlug(p);
-    var hasDetail = !!slug;
-    var tag  = hasDetail ? 'a' : 'div';
-    var cls  = 'player-card' + (isStaff ? ' staff-card' : '') + (hasDetail ? ' has-detail' : '');
-    var href = hasDetail ? ' href="players/detail.html?slug=' + esc(slug) + '"' : '';
+        currentSection = btn.dataset.section;
+        currentYear = "all";
 
-    var roleBadge = (p.role && !isStaff)
-      ? '<div class="player-role leader">' + esc(p.role) + '</div>'
-      : '';
+        document.querySelectorAll(".ytab").forEach((b) => b.classList.remove("active"));
+        const allYearBtn = document.querySelector('.ytab[data-year="all"]');
+        if (allYearBtn) allYearBtn.classList.add("active");
 
-    var staffBadge = isStaff
-      ? '<div class="staff-role-badge">' + esc(p.staffRole) + '</div>'
-      : '';
+        const yearBar = document.getElementById("year-sub-bar");
+        if (yearBar) {
+          yearBar.style.display = currentSection === "players" ? "" : "none";
+        }
 
-    var photoInner = p.photo
-      ? '<img src="' + esc(p.photo) + '" alt="' + esc(p.name) + '" onerror="this.style.display=\'none\'">'
-      : '';
-
-    var numContent;
-    if (isStaff) {
-      numContent = '<span>' + esc(p.staffRole) + '</span>';
-    } else if (p.number !== null && p.number !== '') {
-      numContent = '#' + esc(p.number);
-    } else {
-      numContent = '<span>' + esc(p.grade) + '回生</span>';
-    }
-    var hasRole = !isStaff && p.role;
-    var numClass = 'player-num' + (hasRole ? '' : ' no-role');
-
-    var gradeLabel = p.grade + '回生';
-
-    var detailArrow = hasDetail
-      ? '<div class="player-detail-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg></div>'
-      : '';
-
-    return (
-      '<' + tag + ' class="' + cls + '"' + href + ' data-year="' + p.grade + '">' +
-        '<div class="player-photo">' +
-          roleBadge +
-          photoInner +
-          '<div class="img-slot light">' +
-            '<span class="slot-label">' + esc(p.name) + '</span>' +
-          '</div>' +
-          staffBadge +
-        '</div>' +
-        '<div class="' + numClass + '">' + numContent + '</div>' +
-        '<div class="player-info">' +
-          '<div class="player-pos">' + esc(gradeLabel) + '</div>' +
-          '<div class="player-name">' + esc(p.name) + '</div>' +
-          detailArrow +
-        '</div>' +
-      '</' + tag + '>'
-    );
-  }
-
-  function render(players) {
-    var grid = document.getElementById('rosterFullGrid');
-    if (!grid) return;
-
-    var grades = [4, 3, 2, 1];
-    var html = '';
-
-    grades.forEach(function (g) {
-      var group = players.filter(function (p) { return p.grade === g; });
-      if (group.length === 0) return;
-
-      var count = group.length;
-      html +=
-        '<div class="year-group-header" data-year="' + g + '">' +
-          '<span class="yh-label">' + g + '回生</span>' +
-          '<span class="yh-count">' + count + '名</span>' +
-        '</div>';
-
-      group.forEach(function (p) { html += buildCard(p); });
+        renderRoster();
+      });
     });
 
-    grid.innerHTML = html;
+    document.querySelectorAll(".ytab").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".ytab").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
 
-    var playerCount = players.filter(function (p) {
-      return p.section === 'player';
-    }).length;
-    var tcEl = document.getElementById('totalCount');
-    if (tcEl) tcEl.textContent = playerCount;
-
-    if (typeof applyFilter === 'function') applyFilter();
-  }
-
-  function loadPlayers() {
-    fetch('data/players.json')
-      .then(function (r) {
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        return r.json();
-      })
-      .then(function (data) {
-        var players = Array.isArray(data) ? data : (data.players || []);
-        render(players);
-      })
-      .catch(function () {
-        var grid = document.getElementById('rosterFullGrid');
-        if (grid) {
-          grid.innerHTML =
-            '<div class="roster-load-error">' +
-              '<div class="roster-load-error-title">LOAD ERROR</div>' +
-              '<div class="roster-load-error-sub">ローカルで表示するには <code>npx serve</code> を実行してください。</div>' +
-            '</div>';
-        }
+        currentYear = btn.dataset.year;
+        renderRoster();
       });
+    });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', loadPlayers);
-  } else {
-    loadPlayers();
+  function renderRoster() {
+    let members = allMembers.filter((member) => {
+      if (currentSection === "players") return member.section === "player";
+      if (currentSection === "staff") return member.section === "staff";
+      if (currentSection === "coaches") {
+        return member.section === "coach" || member.section === "coaches";
+      }
+      return true;
+    });
+
+    if (currentSection === "players" && currentYear !== "all") {
+      members = members.filter((member) => String(member.grade) === String(currentYear));
+    }
+
+    if (visCount) visCount.textContent = members.length;
+    if (totalCount) totalCount.textContent = allMembers.length;
+
+    grid.innerHTML = members.map(createCard).join("");
   }
-})();
+
+  function createCard(player) {
+    const name = player.name || "No Name";
+    const grade = player.grade ? `${player.grade}回生` : "";
+    const position = player.position || player.staffRole || "";
+    const number =
+      player.number !== null && player.number !== undefined && player.number !== ""
+        ? `#${player.number}`
+        : player.staffRole || "";
+    const role = player.role || "";
+    const faculty = player.faculty || "";
+    const department = player.department || "";
+    const school = player.school || "";
+    const photo = getPhoto(player);
+
+    return `
+      <div class="player-card" data-year="${escapeHtml(player.grade || "")}">
+        <div class="player-photo">
+          ${
+            photo
+              ? `<img src="${escapeHtml(photo)}" alt="${escapeHtml(name)}" loading="lazy">`
+              : `<div class="img-slot light">
+                   <span class="slot-label">${escapeHtml(name)}</span>
+                 </div>`
+          }
+        </div>
+
+        <div class="player-num ${role ? "" : "no-role"}">${escapeHtml(number)}</div>
+
+        <div class="player-info">
+          <div class="player-pos">${escapeHtml([grade, position].filter(Boolean).join(" / "))}</div>
+          <div class="player-name">${escapeHtml(name)}</div>
+
+          ${role ? `<div class="player-role">${escapeHtml(role)}</div>` : ""}
+
+          ${
+            faculty || department
+              ? `<div class="player-meta">${escapeHtml([faculty, department].filter(Boolean).join(" "))}</div>`
+              : ""
+          }
+
+          ${school ? `<div class="player-meta">${escapeHtml(school)}</div>` : ""}
+        </div>
+      </div>
+    `;
+  }
+
+  function getPhoto(player) {
+    if (player.photo && player.photo.trim() !== "") return player.photo;
+
+    if (Array.isArray(player.photos)) {
+      const validPhoto = player.photos.find((p) => p && p.trim() !== "");
+      if (validPhoto) return validPhoto;
+    }
+
+    return "";
+  }
+
+  function escapeHtml(str) {
+    return String(str)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+});
