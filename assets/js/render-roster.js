@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", async function () {
   const grid = document.getElementById("rosterFullGrid");
   const visCount = document.getElementById("visCount");
   const totalCount = document.getElementById("totalCount");
@@ -24,15 +24,20 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   function setupTabs() {
-    document.querySelectorAll(".stab").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll(".stab").forEach((b) => b.classList.remove("active"));
+    document.querySelectorAll(".stab").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        document.querySelectorAll(".stab").forEach(function (b) {
+          b.classList.remove("active");
+        });
         btn.classList.add("active");
 
         currentSection = btn.dataset.section;
         currentYear = "all";
 
-        document.querySelectorAll(".ytab").forEach((b) => b.classList.remove("active"));
+        document.querySelectorAll(".ytab").forEach(function (b) {
+          b.classList.remove("active");
+        });
+
         const allYearBtn = document.querySelector('.ytab[data-year="all"]');
         if (allYearBtn) allYearBtn.classList.add("active");
 
@@ -45,9 +50,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
     });
 
-    document.querySelectorAll(".ytab").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll(".ytab").forEach((b) => b.classList.remove("active"));
+    document.querySelectorAll(".ytab").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        document.querySelectorAll(".ytab").forEach(function (b) {
+          b.classList.remove("active");
+        });
         btn.classList.add("active");
 
         currentYear = btn.dataset.year;
@@ -57,7 +64,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   function renderRoster() {
-    let members = allMembers.filter((member) => {
+    let members = allMembers.filter(function (member) {
       if (currentSection === "players") return member.section === "player";
       if (currentSection === "staff") return member.section === "staff";
       if (currentSection === "coaches") {
@@ -67,7 +74,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     if (currentSection === "players" && currentYear !== "all") {
-      members = members.filter((member) => String(member.grade) === String(currentYear));
+      members = members.filter(function (member) {
+        return String(member.grade) === String(currentYear);
+      });
     }
 
     if (visCount) visCount.textContent = members.length;
@@ -75,18 +84,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     grid.innerHTML = "";
 
-    members.forEach((member) => {
+    members.forEach(function (member) {
       grid.appendChild(createCard(member));
     });
   }
 
   function createCard(player) {
     const name = player.name || "No Name";
-    const grade = player.grade ? `${player.grade}回生` : "";
+    const grade = player.grade ? player.grade + "回生" : "";
     const position = player.position || player.staffRole || "";
     const number =
       player.number !== null && player.number !== undefined && player.number !== ""
-        ? `#${player.number}`
+        ? "#" + player.number
         : player.staffRole || "";
     const role = player.role || "";
     const faculty = player.faculty || "";
@@ -169,7 +178,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (player.photo && player.photo.trim() !== "") return player.photo;
 
     if (Array.isArray(player.photos)) {
-      const validPhoto = player.photos.find((p) => p && p.trim() !== "");
+      const validPhoto = player.photos.find(function (p) {
+        return p && p.trim() !== "";
+      });
       if (validPhoto) return validPhoto;
     }
 
