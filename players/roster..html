@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROSTER — DOLAX</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<main>
+  <div id="year-sub-bar">
+    <button class="ytab active" data-year="all">全員</button>
+    <button class="ytab" data-year="4">4回生</button>
+    <button class="ytab" data-year="3">3回生</button>
+    <button class="ytab" data-year="2">2回生</button>
+    <button class="ytab" data-year="1">1回生</button>
+  </div>
+
+  <div>
+    <button class="stab active" data-section="players">選手</button>
+    <button class="stab" data-section="staff">スタッフ</button>
+    <button class="stab" data-section="coaches">コーチ</button>
+  </div>
+
+  <div id="rosterFullGrid"></div>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="assets/js/render-layout.js"></script>
+<script src="assets/js/render-roster.js"></script>
+</body>
+</html>
