@@ -13,12 +13,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     if (totalCount) totalCount.textContent = allMembers.length;
 
-    // カードを全部描画する（フィルターは roster-filter.js が担当）
     allMembers.forEach(function (member) {
       grid.appendChild(createCard(member));
     });
 
-    // 描画後にフィルターを適用
     if (typeof applyFilter === "function") applyFilter();
 
   } catch (error) {
@@ -42,7 +40,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const card = document.createElement("div");
     card.className = "player-card";
-    // section に応じてクラスを追加
     if (player.section === "staff") card.classList.add("staff-card");
     if (player.section === "coach" || player.section === "coaches") card.classList.add("coach-card");
     card.dataset.year = player.grade || "";
