@@ -1,92 +1,29 @@
 document.addEventListener("DOMContentLoaded", async function () {
   const grid = document.getElementById("rosterFullGrid");
-  const visCount = document.getElementById("visCount");
   const totalCount = document.getElementById("totalCount");
 
   if (!grid) return;
-
-  let allMembers = [];
-  let currentSection = "players";
-  let currentYear = "all";
 
   try {
     const res = await fetch("data/players.json");
     if (!res.ok) throw new Error("players.json を読み込めませんでした");
 
     const data = await res.json();
-    allMembers = Array.isArray(data) ? data : data.players || [];
+    const allMembers = Array.isArray(data) ? data : data.players || [];
 
-    setupTabs();
-    renderRoster();
+    if (totalCount) totalCount.textContent = allMembers.length;
+
+    // カードを全部描画する（フィルターは roster-filter.js が担当）
+    allMembers.forEach(function (member) {
+      grid.appendChild(createCard(member));
+    });
+
+    // 描画後にフィルターを適用
+    if (typeof applyFilter === "function") applyFilter();
+
   } catch (error) {
     console.error(error);
     grid.textContent = "選手データを読み込めませんでした。";
-  }
-
-  function setupTabs() {
-    document.querySelectorAll(".stab").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        document.querySelectorAll(".stab").forEach(function (b) {
-          b.classList.remove("active");
-        });
-        btn.classList.add("active");
-
-        currentSection = btn.dataset.section;
-        currentYear = "all";
-
-        document.querySelectorAll(".ytab").forEach(function (b) {
-          b.classList.remove("active");
-        });
-
-        const allYearBtn = document.querySelector('.ytab[data-year="all"]');
-        if (allYearBtn) allYearBtn.classList.add("active");
-
-        const yearBar = document.getElementById("year-sub-bar");
-        if (yearBar) {
-          yearBar.style.display = currentSection === "players" ? "" : "none";
-        }
-
-        renderRoster();
-      });
-    });
-
-    document.querySelectorAll(".ytab").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        document.querySelectorAll(".ytab").forEach(function (b) {
-          b.classList.remove("active");
-        });
-        btn.classList.add("active");
-
-        currentYear = btn.dataset.year;
-        renderRoster();
-      });
-    });
-  }
-
-  function renderRoster() {
-    let members = allMembers.filter(function (member) {
-      if (currentSection === "players") return member.section === "player";
-      if (currentSection === "staff") return member.section === "staff";
-      if (currentSection === "coaches") {
-        return member.section === "coach" || member.section === "coaches";
-      }
-      return true;
-    });
-
-    if (currentSection === "players" && currentYear !== "all") {
-      members = members.filter(function (member) {
-        return String(member.grade) === String(currentYear);
-      });
-    }
-
-    if (visCount) visCount.textContent = members.length;
-    if (totalCount) totalCount.textContent = allMembers.length;
-
-    grid.innerHTML = "";
-
-    members.forEach(function (member) {
-      grid.appendChild(createCard(member));
-    });
   }
 
   function createCard(player) {
@@ -105,6 +42,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const card = document.createElement("div");
     card.className = "player-card";
+    // section に応じてクラスを追加
+    if (player.section === "staff") card.classList.add("staff-card");
+    if (player.section === "coach" || player.section === "coaches") card.classList.add("coach-card");
     card.dataset.year = player.grade || "";
 
     const photoWrap = document.createElement("div");
@@ -119,11 +59,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     } else {
       const slot = document.createElement("div");
       slot.className = "img-slot light";
-
       const label = document.createElement("span");
       label.className = "slot-label";
       label.textContent = name;
-
       slot.appendChild(label);
       photoWrap.appendChild(slot);
     }
@@ -176,14 +114,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   function getPhoto(player) {
     if (player.photo && player.photo.trim() !== "") return player.photo;
-
     if (Array.isArray(player.photos)) {
-      const validPhoto = player.photos.find(function (p) {
-        return p && p.trim() !== "";
-      });
-      if (validPhoto) return validPhoto;
+      const valid = player.photos.find(function (p) { return p && p.trim() !== ""; });
+      if (valid) return valid;
     }
-
     return "";
   }
 });
