@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="同志社大学体育会男子ラクロス部DOLAX 2026年シーズンの選手・スタッフ一覧。130名以上の部員を学年・ポジション別に確認できます。">
+<title>ROSTER 2026 | DOLAX 同志社大学体育会男子ラクロス部</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="ROSTER 2026 | DOLAX 同志社大学体育会男子ラクロス部">
+<meta property="og:description" content="同志社大学体育会男子ラクロス部DOLAX 2026年シーズンの選手・スタッフ一覧。130名以上の部員を学年・ポジション別に確認できます。">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="DOLAX">
+<meta property="og:url" content="https://dolax-lacrosse.jp/roster.html">
+<meta property="og:image" content="https://dolax-lacrosse.jp/assets/hero1.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ROSTER 2026 | DOLAX 同志社大学体育会男子ラクロス部">
+<meta name="twitter:description" content="同志社大学体育会男子ラクロス部DOLAX 2026年シーズンの選手・スタッフ一覧。130名以上の部員を学年・ポジション別に確認できます。">
+<link rel="canonical" href="https://dolax-lacrosse.jp/roster.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Montserrat:ital,wght@0,700;1,700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/roster.css">
+<link rel="stylesheet" href="assets/dolax-motion.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header"></header>
+
+<div class="page-title-row">
+  <div class="wrap page-title-inner">
+    <!-- data/season.json year から render-season.js が自動更新 -->
+    <h1 class="page-title-en" id="rosterPageTitle">ROSTER 2026</h1>
+    <span class="page-title-ja">選手一覧</span>
+  </div>
+</div>
+
+<!-- FILTER TABS -->
+<div class="filter-bar">
+  <!-- Section tabs: PLAYERS / STAFF / COACHES -->
+  <div class="section-tabs">
+    <div class="filter-inner">
+      <button class="stab active" type="button" data-section="players">
+        <span class="stab-en">PLAYERS</span>
+        <span class="stab-ja">選手</span>
+      </button>
+      <button class="stab" type="button" data-section="staff">
+        <span class="stab-en">STAFF</span>
+        <span class="stab-ja">スタッフ</span>
+      </button>
+      <button class="stab" type="button" data-section="coaches">
+        <span class="stab-en">COACHES</span>
+        <span class="stab-ja">コーチ陣</span>
+      </button>
+    </div>
+  </div>
+  <!-- Year sub-tabs: visible in PLAYERS mode only -->
+  <div class="year-sub-bar" id="year-sub-bar">
+    <div class="filter-inner">
+      <button class="ytab active" type="button" data-year="all">ALL</button>
+      <button class="ytab" type="button" data-year="4">4回生</button>
+      <button class="ytab" type="button" data-year="3">3回生</button>
+      <button class="ytab" type="button" data-year="2">2回生</button>
+      <button class="ytab" type="button" data-year="1">1回生</button>
+    </div>
+  </div>
+</div>
+
+<!-- ROSTER GRID -->
+<section class="roster-section">
+  <div class="wrap">
+    <div class="roster-count">
+      <!-- 編集：総部員数（visCount と totalCount の両方を同じ数字に） -->
+      表示中 <span id="visCount">87</span> / <span id="totalCount">87</span> 名
+    </div>
+    <!-- ▼▼ 選手カード一覧 ▼▼ -->
+    <!-- 選手データは data/players.json を編集してください -->
+    <!-- player-role は役職ありの場合のみ。役職なしは no-role クラスのまま -->
+
+    <!--
+      ▼ 選手カード追加例（data-year は学年: 4/3/2/1）:
+
+      <div class="player-card" data-year="4">
+        <div class="player-photo">
+          <div class="img-slot light">
+            <span class="slot-label">氏名</span>
+          </div>
+        </div>
+        <div class="player-num no-role">#背番号</div>
+        <div class="player-info">
+          <div class="player-pos">4回生</div>
+          <div class="player-name">氏名（漢字）</div>
+        </div>
+      </div>
+    -->
+
+    <div class="roster-full-grid" id="rosterFullGrid">
+      <!-- data/players.json から render-roster.js が自動生成 -->
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="site-footer"></footer>
+
+<script src="assets/js/roster-filter.js"></script>
+<script src="assets/js/render-roster.js"></script>
+<script src="assets/js/render-layout.js"></script>
+<script src="assets/js/render-season.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/dolax-motion.js" defer></script>
+</body>
+</html>
