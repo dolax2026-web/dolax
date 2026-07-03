@@ -10,7 +10,12 @@
   }
 
   function playerSlug(p) {
-    if (p.grade === 4 && p.number !== null && p.number !== '') return 'grade4-' + p.number;
+    // slugフィールドがあればそれを使う
+    if (p.slug && p.slug.trim() !== '') return p.slug;
+    // slugがなくてもnumberがあれば自動生成
+    if (p.number !== null && p.number !== undefined && p.number !== '') {
+      return 'grade' + p.grade + '-' + p.number;
+    }
     return '';
   }
 
@@ -37,7 +42,7 @@
     var numContent;
     if (isStaff) {
       numContent = '<span>' + esc(p.staffRole) + '</span>';
-    } else if (p.number !== null && p.number !== '') {
+    } else if (p.number !== null && p.number !== undefined && p.number !== '') {
       numContent = '#' + esc(p.number);
     } else {
       numContent = '<span>' + esc(p.grade) + '回生</span>';
