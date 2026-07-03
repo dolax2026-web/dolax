@@ -1,4 +1,4 @@
-  /* ---- IMG SLOT ---- */
+/* ---- IMG SLOT ---- */
   .img-slot{background:rgba(20,35,63,.05);border:2px dashed rgba(20,35,63,.15);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;}
   .img-slot .slot-label{font-family:var(--font-en);font-size:11px;letter-spacing:.1em;color:rgba(20,35,63,.25);pointer-events:none;user-select:none;padding:6px;text-align:center;}
   .img-slot img.filled{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
@@ -42,8 +42,8 @@
   .player-role.leader{background:var(--navy);color:var(--gold);}
   .player-role.subleader{background:var(--navy-mid);color:#fff;}
   /* 番号 */
-  .player-num{position:absolute;top:32px;left:12px;font-family:var(--font-number);font-weight:700;font-size:26px;color:#fff;line-height:1;text-shadow:0 2px 8px rgba(0,0,0,.6);z-index:2;letter-spacing:.02em;}
-  .player-num.no-role{top:12px;}
+  .player-num{position:absolute;top:12px;left:12px;font-family:var(--font-number);font-weight:700;font-size:26px;color:#fff;line-height:1;text-shadow:0 2px 8px rgba(0,0,0,.6);z-index:2;letter-spacing:.02em;}
+  
   .player-num span{color:var(--gold);font-size:13px;font-weight:600;}
   /* 情報エリア */
   .player-info{padding:14px 16px 18px;}
