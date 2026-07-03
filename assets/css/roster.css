@@ -43,7 +43,8 @@
   .player-role.subleader{background:var(--navy-mid);color:#fff;}
   /* 番号 */
   .player-num{position:absolute;top:12px;left:12px;font-family:var(--font-number);font-weight:700;font-size:26px;color:#fff;line-height:1;text-shadow:0 2px 8px rgba(0,0,0,.6);z-index:2;letter-spacing:.02em;}
-  
+
+  .player-card:has(.player-role) .player-num{top:36px;}
   .player-num span{color:var(--gold);font-size:13px;font-weight:600;}
   /* 情報エリア */
   .player-info{padding:14px 16px 18px;}
