@@ -4,7 +4,7 @@
    ================================================================ */
 
 (function () {
-  var POSITION_LABEL = { AT: 'AT（アタック）', MF: 'MF（ミッドフィルダー）', DF: 'DF（ディフェンス）', G: 'G（ゴーリー）' };
+  var POSITION_LABEL = { AT: 'AT', MF: 'MF', SSDM: 'SSDM' , DF: 'DF', G: 'G（ゴーリー）' };
   var GRADE_LABEL    = { 1: '1回生', 2: '2回生', 3: '3回生', 4: '4回生' };
 
   function esc(s) {
@@ -57,10 +57,11 @@
     }
 
     var profileRows =
-      row('学部',         p.faculty)         +
-      row('学科',         p.department)      +
-      row('出身校',       p.school)          +
-      row('経験スポーツ', p.experienceSports);
+    row('学部',         p.faculty)         +
+    row('学科',         p.department)      +
+    row('出身校',       p.school)          +
+    row('出身地',       p.hometown)        +
+    row('経験スポーツ', p.experienceSports);
 
     var commentHtml = p.comment
       ? '<div class="pd-comment"><blockquote>' + esc(p.comment) + '</blockquote></div>'
