@@ -9,19 +9,32 @@
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
-  function playerSlug(p) {
+  function getSlug(p) {
     // slugフィールドがあればそれを使う
     if (p.slug && p.slug.trim() !== '') return p.slug;
-    // slugがなくてもnumberがあれば自動生成
+
+    // 背番号がある選手 → grade2-23 形式
     if (p.number !== null && p.number !== undefined && p.number !== '') {
       return 'grade' + p.grade + '-' + p.number;
     }
+
+    // スタッフ・コーチ → staff-grade4-mg-山本梨世 形式（名前をローマ字化できないのでnameEnを使う）
+    if (p.section === 'staff' || p.section === 'coach' || p.section === 'coaches') {
+      var role = (p.staffRole || 'staff').toLowerCase();
+      var nameKey = (p.nameEn || p.name || '').replace(/\s+/g, '-').toLowerCase();
+      if (nameKey) return 'staff-grade' + p.grade + '-' + role + '-' + nameKey;
+    }
+
+    // 背番号なし選手（1回生など）→ grade1-名前
+    var nameKey2 = (p.nameEn || p.name || '').replace(/\s+/g, '-').toLowerCase();
+    if (nameKey2) return 'grade' + p.grade + '-' + nameKey2;
+
     return '';
   }
 
   function buildCard(p) {
-    var isStaff = p.section === 'staff' || p.section === 'coach';
-    var slug     = isStaff ? '' : playerSlug(p);
+    var isStaff = p.section === 'staff' || p.section === 'coach' || p.section === 'coaches';
+    var slug = getSlug(p);
     var hasDetail = !!slug;
     var tag  = hasDetail ? 'a' : 'div';
     var cls  = 'player-card' + (isStaff ? ' staff-card' : '') + (hasDetail ? ' has-detail' : '');
