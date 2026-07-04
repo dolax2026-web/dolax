@@ -35,9 +35,9 @@
   function render(p) {
     setMeta(p.name);
 
-    var photoSrc = p.photo ? '../' + p.photo : '';
+    var photoSrc = p.photo || '';
     var photoHtml = photoSrc
-      ? '<img id="pdPhoto" src="' + esc(photoSrc) + '" alt="' + esc(p.name) + '">'
+      ? '<img id="pdPhoto" src="' + esc('../' + photoSrc) + '" alt="' + esc(p.name) + '">'
       : '';
 
     var numberHtml = (p.number !== null && p.number !== '')
