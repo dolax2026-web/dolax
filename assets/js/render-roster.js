@@ -49,8 +49,8 @@
       : '';
 
     var photoInner = p.photo
-      ? '<img src="' + esc(p.photo) + '" alt="' + esc(p.name) + '" onerror="this.style.display=\'none\'">'
-      : '';
+  ? '<img src="' + esc(p.photo) + '" alt="' + esc(p.name) + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:1;" onerror="this.style.display=\'none\'">'
+  : '';
 
     var numContent;
     if (isStaff) {
