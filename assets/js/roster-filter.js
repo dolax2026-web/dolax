@@ -1,13 +1,9 @@
 /* ================================================================
    roster-filter.js — roster.html セクション／年次フィルター
-   ================================================================
-   ▶ PLAYERS / STAFF / COACHES タブ切り替えと学年絞り込みを担当
-   ▶ render-roster.js が applyFilter() を呼び出すため、
-     グローバル関数として定義する（IIFE 不使用）
    ================================================================ */
 
 var currentSection = 'players';
-var currentYear    = 'all';
+var currentYear    = '4';
 
 function applyFilter() {
   var vis = 0;
@@ -28,37 +24,80 @@ function applyFilter() {
   });
   var visEl = document.getElementById('visCount');
   if (visEl) visEl.textContent = vis;
+
+  // タブの状態をURLに保存（戻ったとき復元するため）
+  var params = new URLSearchParams(window.location.search);
+  params.set('section', currentSection);
+  params.set('year', currentYear);
+  history.replaceState(null, '', '?' + params.toString());
 }
 
-function switchSection(section, btn) {
+function switchTab(section, year, btn) {
   currentSection = section;
-  currentYear    = 'all';
+  currentYear    = year;
   document.querySelectorAll('.stab').forEach(function (t) { t.classList.remove('active'); });
   btn.classList.add('active');
-  var yearSubBar = document.getElementById('year-sub-bar');
-  if (yearSubBar) yearSubBar.classList.toggle('is-hidden', section !== 'players');
-  var firstYtab = document.querySelector('.ytab');
-  document.querySelectorAll('.ytab').forEach(function (t) { t.classList.remove('active'); });
-  if (firstYtab) firstYtab.classList.add('active');
   applyFilter();
 }
 
-function switchYear(year, btn) {
-  currentYear = year;
-  document.querySelectorAll('.ytab').forEach(function (t) { t.classList.remove('active'); });
-  btn.classList.add('active');
+/* ── ページ読み込み時にURLのパラメータを復元 ── */
+function restoreState() {
+  var params = new URLSearchParams(window.location.search);
+  var section = params.get('section') || 'players';
+  var year    = params.get('year')    || '4';
+  var slug    = params.get('from')    || '';
+
+  currentSection = section;
+  currentYear    = year;
+
+  // タブのアクティブ状態を復元
+  document.querySelectorAll('.stab').forEach(function (btn) {
+    if (btn.dataset.section === section && btn.dataset.year === year) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+
   applyFilter();
+
+  // 戻ってきた選手の位置にスクロール
+  if (slug) {
+    setTimeout(function () {
+      var card = document.querySelector('a[href*="slug=' + slug + '"]');
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 300);
+  }
 }
 
-/* ── イベントリスナー（onclick 属性の代替） ── */
+/* ── イベントリスナー ── */
 document.querySelectorAll('.stab').forEach(function (btn) {
   btn.addEventListener('click', function () {
-    switchSection(btn.dataset.section, btn);
+    switchTab(btn.dataset.section, btn.dataset.year || 'all', btn);
   });
 });
 
-document.querySelectorAll('.ytab').forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    switchYear(btn.dataset.year, btn);
+/* ── 選手カードのリンクにfromパラメータを追加 ── */
+function addFromParam() {
+  document.querySelectorAll('a.player-card[href*="detail.html"]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      var url = new URL(link.href);
+      var slug = url.searchParams.get('slug');
+      var params = new URLSearchParams(window.location.search);
+      params.set('from', slug);
+      history.replaceState(null, '', '?' + params.toString());
+    });
   });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  restoreState();
+});
+
+// render-roster.jsが描画完了後にfromParamを設定
+window.addEventListener('rosterRendered', function () {
+  addFromParam();
+  restoreState();
 });
