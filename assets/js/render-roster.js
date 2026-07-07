@@ -25,13 +25,14 @@
   }
 
   function buildCard(p) {
-    var isStaff = p.section === 'staff' || p.section === 'coach' || p.section === 'coaches';
-    var slug = getSlug(p);
-    var hasDetail = !!slug;
-    var tag  = hasDetail ? 'a' : 'div';
-    var cls  = 'player-card' + (isStaff ? ' staff-card' : '') + (hasDetail ? ' has-detail' : '');
-
-    // 詳細ページのURLに現在のタブ情報を含める
+   var isStaff = p.section === 'staff';
+   var isCoach = p.section === 'coach' || p.section === 'coaches';
+   var slug = getSlug(p);
+   var hasDetail = !!slug;
+   var tag  = hasDetail ? 'a' : 'div';
+   var cls  = 'player-card' + (isStaff ? ' staff-card' : '') + (isCoach ? ' coach-card' : '') + (hasDetail ? ' has-detail' : '');
+  
+     // 詳細ページのURLに現在のタブ情報を含める
     var params = new URLSearchParams(window.location.search);
     var section = params.get('section') || 'players';
     var year    = params.get('year')    || '4';
@@ -43,16 +44,16 @@
       ? '<div class="player-role leader">' + esc(p.role) + '</div>'
       : '';
 
-    var staffBadge = isStaff
-      ? '<div class="staff-role-badge">' + esc(p.staffRole) + '</div>'
-      : '';
+    var staffBadge = (isStaff || isCoach)
+  ? '<div class="staff-role-badge">' + esc(p.staffRole) + '</div>'
+  : '';
 
     var photoInner = p.photo
       ? '<img src="' + esc(p.photo) + '" alt="' + esc(p.name) + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:1;" onerror="this.style.display=\'none\'">'
       : '';
 
     var numContent;
-    if (isStaff) {
+    if (isStaff || isCoach) {
       numContent = '<span>' + esc(p.staffRole) + '</span>';
     } else if (p.number !== null && p.number !== undefined && p.number !== '') {
       numContent = '#' + esc(p.number);
