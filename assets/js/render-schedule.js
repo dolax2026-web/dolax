@@ -56,14 +56,20 @@
   }
 
   function buildResultCard(m) {
-    var res   = (m.result || '').toLowerCase();
-    var cardClass = res === 'win'  ? 'game-card result-win'
-                  : res === 'draw' ? 'game-card result-draw'
-                  : 'game-card result-lose';
-    var badgeClass = res === 'win'  ? 'badge-result badge-win'
-                   : res === 'draw' ? 'badge-result badge-draw'
-                   : 'badge-result badge-lose';
-    var badgeLabel = res === 'win' ? 'WIN' : res === 'draw' ? 'DRAW' : 'LOSE';
+var res   = (m.result || '').toLowerCase();
+var isSpecial = m.result && res !== 'win' && res !== 'lose' && res !== 'draw';
+var cardClass = res === 'win'   ? 'game-card result-win'
+              : res === 'draw'  ? 'game-card result-draw'
+              : isSpecial       ? 'game-card result-cancel'
+              : 'game-card result-lose';
+var badgeClass = res === 'win'  ? 'badge-result badge-win'
+               : res === 'draw' ? 'badge-result badge-draw'
+               : isSpecial      ? 'badge-result badge-cancel'
+               : 'badge-result badge-lose';
+var badgeLabel = res === 'win'  ? 'WIN'
+               : res === 'draw' ? 'DRAW'
+               : isSpecial      ? esc(m.result)
+               : 'LOSE';
 
     var dateStr  = esc(m.date) + (m.dayOfWeek ? ' ' + esc(m.dayOfWeek) : '');
     var venueHtml = m.venue ? '<span class="card-venue">' + esc(m.venue) + '</span>' : '';
