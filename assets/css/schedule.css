@@ -104,7 +104,7 @@
   /* card body — match display */
   .card-body { display: flex; align-items: center; padding: 28px 32px; gap: 16px; }
   .card-team { flex: 1; }
-  .card-home { text-align: left; }
+  .card-home { text-align: right; }
   .card-away { text-align: center; }
   .team-name { font-family: var(--font-body); font-weight: 700; font-size: 16px; color: var(--navy); line-height: 1.4; }
   /* DUロゴ（試合カード内） */
