@@ -132,9 +132,15 @@
     box-shadow: 0 0 0 5px var(--cream);
   }
   .tl-dot span.big {
-    width: 18px; height: 18px;
-    box-shadow: 0 0 0 5px var(--cream), 0 0 0 8px rgba(194,144,47,.2);
+  width: 18px; height: 18px;
+  box-shadow: 0 0 0 5px var(--cream);
+}
+
+@media (max-width: 900px) {
+  .tl-dot span.big {
+    box-shadow: 0 0 0 4px var(--cream);
   }
+}
   .tl-right:empty, .tl-left:empty { padding-bottom: 0; min-height: 0; }
   .tl-year {
     font-family: "Montserrat", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
@@ -185,3 +191,8 @@
     .phil-head { font-size: 17px; }
     .tl-right { padding-left: 16px; }
   }
+@media (max-width: 900px) {
+  .tl-dot {
+    padding-top: 2px;
+  }
+}
