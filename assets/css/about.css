@@ -1,4 +1,4 @@
-  /* ============ PHILOSOPHY ============ */
+/* ============ PHILOSOPHY ============ */
   .phil-sec { background: var(--paper); }
   .phil-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
   .phil-card {
@@ -132,15 +132,9 @@
     box-shadow: 0 0 0 5px var(--cream);
   }
   .tl-dot span.big {
-  width: 18px; height: 18px;
-  box-shadow: 0 0 0 5px var(--cream);
-}
-
-@media (max-width: 900px) {
-  .tl-dot span.big {
-    box-shadow: 0 0 0 4px var(--cream);
+    width: 18px; height: 18px;
+    box-shadow: 0 0 0 5px var(--cream);
   }
-}
   .tl-right:empty, .tl-left:empty { padding-bottom: 0; min-height: 0; }
   .tl-year {
     font-family: "Montserrat", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
@@ -165,13 +159,27 @@
     .phil-grid { grid-template-columns: 1fr; }
     .ach-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
     .ach-card.ach-gold { grid-column: 1 / -1; }
-    .tl-wrap::before { left: 15px; transform: none; }
-.tl-row { grid-template-columns: 30px 1fr; gap: 0; }
-.tl-left { display: none; }
-.tl-dot { justify-content: center; padding-top: 4px; }
-.tl-right { padding-left: 24px; }
     .outline-table th { width: 140px; font-size: 12px; }
+
+    /* タイムライン スマホ表示 */
+    .tl-wrap::before { display: none; }
+    .tl-dot { display: none; }
+    .tl-left { display: none; }
+    .tl-row {
+      display: block;
+      margin-left: 16px;
+      border-left: 3px solid rgba(194,144,47,.4);
+      margin-bottom: 0;
+    }
+    .tl-right {
+      padding-left: 20px;
+      padding-bottom: 32px;
+      min-height: 0;
+    }
+    .tl-year { font-size: 12px; }
+    .tl-ttl { font-size: 17px; }
   }
+
   @media (max-width: 600px) {
     .redeem-word { font-size: 58px; }
     .redeem-sub { font-size: 16px; }
@@ -182,6 +190,7 @@
     .outline-table tr { display: block; padding: 18px 0; }
     .outline-table tr:first-child { padding-top: 18px; }
   }
+
   @media (max-width: 480px) {
     .redeem-word { font-size: 46px; letter-spacing: .08em; }
     .redeem-sub { font-size: 15px; }
@@ -191,8 +200,3 @@
     .phil-head { font-size: 17px; }
     .tl-right { padding-left: 16px; }
   }
-@media (max-width: 900px) {
-  .tl-dot {
-    padding-top: 2px;
-  }
-}
