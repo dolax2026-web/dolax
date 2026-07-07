@@ -184,14 +184,18 @@ var scoreHtml = isSpecial
       lrMeta.innerHTML =
         '<span class="mc-date">' + esc(lr.date) + (lr.dayOfWeek ? ' ' + esc(lr.dayOfWeek) : '') + '</span>' +
         '<span class="mc-cat">' + esc(lrCat) + '</span>';
-      lrMatchup.innerHTML =
-        '<div class="mc-team mc-team--home">同志社大学</div>' +
-        '<div class="mc-center"><div class="mc-score">' +
-          '<span class="mc-score-num">' + (lr.homeScore !== null ? lr.homeScore : '?') + '</span>' +
-          '<span class="mc-score-sep">—</span>' +
-          '<span class="mc-score-num">' + (lr.awayScore !== null ? lr.awayScore : '?') + '</span>' +
-        '</div></div>' +
-        '<div class="mc-team mc-team--away">' + esc(lr.opponent) + '</div>';
+      var lrIsSpecial = lr.result && lr.result !== 'win' && lr.result !== 'lose' && lr.result !== 'draw';
+var lrScoreHtml = lrIsSpecial
+  ? '<span class="mc-vs-text">' + esc(lr.result) + '</span>'
+  : '<div class="mc-score">' +
+      '<span class="mc-score-num">' + (lr.homeScore !== null ? lr.homeScore : '?') + '</span>' +
+      '<span class="mc-score-sep">—</span>' +
+      '<span class="mc-score-num">' + (lr.awayScore !== null ? lr.awayScore : '?') + '</span>' +
+    '</div>';
+lrMatchup.innerHTML =
+  '<div class="mc-team mc-team--home">同志社大学</div>' +
+  '<div class="mc-center">' + lrScoreHtml + '</div>' +
+  '<div class="mc-team mc-team--away">' + esc(lr.opponent) + '</div>';
       lrSub.innerHTML = '<span class="mc-result-badge ' + badgeCls + '">' + badgeTxt + '</span>';
     }
   }
