@@ -149,9 +149,12 @@ var scoreHtml = isSpecial
   .sort(function (a, b) { return parseDateNum(a.date) - parseDateNum(b.date); });
 
     /* 最新結果: type===result の中で最も日付が新しい */
-    var results = matches
-      .filter(function (m) { return m.type === 'result'; })
-      .sort(function (a, b) { return parseDateNum(b.date) - parseDateNum(a.date); });
+  var results = matches
+  .filter(function (m) {
+    return m.type === 'result' ||
+           (m.type === 'scheduled' && parseDateNum(m.date) < today);
+  })
+  .sort(function (a, b) { return parseDateNum(b.date) - parseDateNum(a.date); });
 
     /* NEXT GAME */
     if (ngMeta && upcoming.length) {
