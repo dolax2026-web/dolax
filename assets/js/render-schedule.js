@@ -141,8 +141,12 @@ var scoreHtml = isSpecial
 
     /* 次の試合: type===scheduled かつ 日付 >= 今日 の中で最も近い */
     var upcoming = matches
-      .filter(function (m) { return m.type === 'scheduled' && parseDateNum(m.date) >= today; })
-      .sort(function (a, b) { return parseDateNum(a.date) - parseDateNum(b.date); });
+  .filter(function (m) {
+    return (m.type === 'scheduled' || m.type === 'result') &&
+           parseDateNum(m.date) >= today &&
+           !m.result;
+  })
+  .sort(function (a, b) { return parseDateNum(a.date) - parseDateNum(b.date); });
 
     /* 最新結果: type===result の中で最も日付が新しい */
     var results = matches
