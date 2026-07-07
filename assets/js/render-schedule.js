@@ -57,7 +57,7 @@
 
   function buildResultCard(m) {
 var res   = (m.result || '').toLowerCase();
-var isSpecial = m.result && res !== 'win' && res !== 'lose' && res !== 'draw';
+var isSpecial = m.result && m.result !== 'win' && m.result !== 'lose' && m.result !== 'draw';
 var cardClass = res === 'win'   ? 'game-card result-win'
               : res === 'draw'  ? 'game-card result-draw'
               : isSpecial       ? 'game-card result-cancel'
@@ -74,12 +74,13 @@ var badgeLabel = res === 'win'  ? 'WIN'
     var dateStr  = esc(m.date) + (m.dayOfWeek ? ' ' + esc(m.dayOfWeek) : '');
     var venueHtml = m.venue ? '<span class="card-venue">' + esc(m.venue) + '</span>' : '';
 
-    var scoreHtml =
-      '<div class="score-row">' +
-        '<span class="score-num">' + (m.homeScore !== null ? m.homeScore : '?') + '</span>' +
-        '<span class="score-sep">&#8212;</span>' +
-        '<span class="score-num">' + (m.awayScore !== null ? m.awayScore : '?') + '</span>' +
-      '</div>';
+var scoreHtml = isSpecial
+  ? '<div class="score-row"><span class="score-special">' + esc(m.result) + '</span></div>'
+  : '<div class="score-row">' +
+      '<span class="score-num">' + (m.homeScore !== null ? m.homeScore : '?') + '</span>' +
+      '<span class="score-sep">&#8212;</span>' +
+      '<span class="score-num">' + (m.awayScore !== null ? m.awayScore : '?') + '</span>' +
+    '</div>';
 
     var igHtml = m.instagramUrl
       ? '<div class="card-foot">' +
