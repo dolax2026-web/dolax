@@ -3,8 +3,7 @@
    ================================================================ */
 
 (function () {
-  var DU_LOGO =
-    '<img src="assets/du-logo.png" alt="同志社大学" class="card-du-logo">';
+var DU_LOGO = '';
 
   var IG_SVG =
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">' +
