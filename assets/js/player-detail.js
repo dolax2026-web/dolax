@@ -37,7 +37,7 @@
 
     var photoSrc = p.photo || '';
     var photoHtml = photoSrc
-      ? '<img id="pdPhoto" src="' + esc('../' + photoSrc) + '" alt="' + esc(p.name) + '">'
+      ? '<img id="pdPhoto" src="' + esc(photoSrc) + '" alt="' + esc(p.name) + '">'
       : '';
 
     var numberHtml = (p.number !== null && p.number !== '')
@@ -123,9 +123,7 @@
         : '') +
 
       /* ── 戻るボタン ── */
-      '<div class="pd-back">' +
-        '<a href="../roster.html" class="pd-back-btn">← Rosterへ戻る</a>' +
-      '</div>';
+      (function() { var params = new URLSearchParams(location.search); var section = params.get('back_section') || 'players'; var year = params.get('back_year') || '4'; var slug = params.get('slug') || ''; var backUrl = '../roster.html?section=' + section + '&year=' + year + '&from=' + slug; return '<div class="pd-back"><a href="' + backUrl + '" class="pd-back-btn">← ROSTERへ戻る</a></div>'; })();
 
     var container = document.getElementById('playerDetail');
     if (container) container.innerHTML = html;
