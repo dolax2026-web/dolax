@@ -178,3 +178,9 @@
     .cat-btn .cat-ja { font-size: 10px; }
     .year-btn { padding: 6px 16px; font-size: 13px; }
   }
+.score-special {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: .05em;
+}
