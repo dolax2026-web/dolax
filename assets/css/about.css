@@ -165,11 +165,11 @@
     .phil-grid { grid-template-columns: 1fr; }
     .ach-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
     .ach-card.ach-gold { grid-column: 1 / -1; }
-    .tl-wrap::before { display: none; }
-.tl-row { display: block; padding-left: 20px; border-left: 2px solid rgba(20,35,63,.12); margin-bottom: 0; }
+    .tl-wrap::before { left: 15px; transform: none; }
+.tl-row { grid-template-columns: 30px 1fr; gap: 0; }
 .tl-left { display: none; }
-.tl-dot { display: none; }
-.tl-right { padding-left: 16px; padding-bottom: 36px; min-height: 0; }
+.tl-dot { justify-content: center; padding-top: 4px; }
+.tl-right { padding-left: 24px; }
     .outline-table th { width: 140px; font-size: 12px; }
   }
   @media (max-width: 600px) {
