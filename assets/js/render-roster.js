@@ -33,12 +33,11 @@
    var cls  = 'player-card' + (isStaff ? ' staff-card' : '') + (isCoach ? ' coach-card' : '') + (hasDetail ? ' has-detail' : '');
   
      // 詳細ページのURLに現在のタブ情報を含める
-    var params = new URLSearchParams(window.location.search);
-    var section = params.get('section') || 'players';
-    var year    = params.get('year')    || '4';
-    var href = hasDetail
-      ? ' href="players/detail.html?slug=' + esc(slug) + '&back_section=' + esc(section) + '&back_year=' + esc(year) + '"'
-      : '';
+   var params = new URLSearchParams(window.location.search);
+var section = params.get('section') || 'players';
+var href = hasDetail
+  ? ' href="players/detail.html?slug=' + esc(slug) + '&back_section=' + esc(section) + '&back_year=all"'
+  : '';
 
     var roleBadge = (p.role && !isStaff)
       ? '<div class="player-role leader">' + esc(p.role) + '</div>'
