@@ -76,7 +76,7 @@
   .card-time { font-family: var(--font-en); font-size: 11px; letter-spacing: .06em; color: var(--navy); background: rgba(20,35,63,.07); padding: 3px 10px; }
   .card-tbd-info { font-size: 12px; color: var(--muted); letter-spacing: .04em; font-style: italic; }
   .card-tournament { font-size: 13px; color: var(--ink); }
-  .card-date { font-family: var(--font-en); font-weight: 500; font-size: 13px; color: var(--navy); letter-spacing: .03em; }
+  .card-date { font-family: var(--font-en); font-weight: 700; font-size: 16px; color: var(--navy); letter-spacing: .03em; }
   .card-venue { font-size: 12px; color: var(--muted); }
 
   /* result badge */
