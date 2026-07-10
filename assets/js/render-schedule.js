@@ -156,8 +156,10 @@
         html+='<div class="cal-list-item" data-match="'+esc(JSON.stringify(match))+'">';
         html+='<div class="list-date"><span class="list-day">'+p.d+'</span><span class="list-dow">'+dow2+'</span></div>';
         html+='<div class="list-team-badge list-team-'+t+'">'+t.toUpperCase()+'</div>';
-        html+='<div class="list-info"><div class="list-opponent">vs '+esc(match.opponent)+'</div>'+(match.venue?'<div class="list-venue">'+esc(match.venue)+'</div>':'')+'</div>';
-        html+='<div class="list-right">'+resultBadge+scoreStr+'</div>';
+var venueTime='';
+if(match.time) venueTime+='<span class="list-time">'+esc(match.time)+'</span>';
+if(match.venue) venueTime+=(venueTime?' · ':'')+esc(match.venue);
+html+='<div class="list-info"><div class="list-opponent">vs '+esc(match.opponent)+'</div>'+(venueTime?'<div class="list-venue">'+venueTime+'</div>':'')+'</div>';        html+='<div class="list-right">'+resultBadge+scoreStr+'</div>';
         html+='</div>';
       });
       html+='</div>';
