@@ -41,8 +41,6 @@
     <div class="year-bar-inner">
       <span class="year-label">SEASON</span>
       <div class="year-tabs">
-        <!-- YEARLY UPDATE: 新シーズン開始時に↓の行を追加し active を移す -->
-        <!-- 例: <button class="year-btn" data-year="2027">2027</button> -->
         <button class="year-btn active" data-year="2026">2026</button>
       </div>
     </div>
@@ -73,42 +71,26 @@
   </div>
 </div>
 
-<!-- GAME MAIN -->
+<!-- CALENDAR MAIN -->
 <main class="game-main">
   <div class="wrap">
 
-    <!-- ── SCHEDULED ── -->
-    <div class="sec-divider">
-      <span class="sec-divider-en">SCHEDULED</span>
-      <span class="sec-divider-ja">試合予定</span>
-      <div class="sec-divider-line"></div>
+    <!-- 凡例 -->
+    <div class="cal-legend">
+      <div class="cal-legend-item">
+        <div class="cal-legend-dot" style="background:#1a2f52;"></div>A TEAM
+      </div>
+      <div class="cal-legend-item">
+        <div class="cal-legend-dot" style="background:#c2902f;"></div>B TEAM
+      </div>
+      <div class="cal-legend-item">
+        <div class="cal-legend-dot" style="background:#6b2c3b;"></div>C TEAM
+      </div>
     </div>
 
-    <!-- ▼▼ 試合予定カード一覧 ▼▼ -->
-    <!-- 編集箇所：data/schedule.json を編集してください -->
-    <div class="game-grid" id="scheduled-list">
-  <!-- data/schedule.json から render-schedule.js が自動生成 -->
-</div>
-
-    <div class="placeholder-card" id="msg-scheduled">
-      <div class="placeholder-ja">試合予定は決定次第掲載します。</div>
-    </div>
-
-    <!-- ── RESULTS ── -->
-    <div class="sec-divider">
-      <span class="sec-divider-en">RESULTS</span>
-      <span class="sec-divider-ja">試合結果</span>
-      <div class="sec-divider-line"></div>
-    </div>
-
-    <!-- ▼▼ 試合結果カード一覧 ▼▼ -->
-    <!-- 編集箇所：data/schedule.json を編集してください -->
-    <div class="game-grid" id="results-list">
-  <!-- data/schedule.json から render-schedule.js が自動生成 -->
-</div>
-
-    <div class="placeholder-card is-hidden" id="msg-result">
-      <div class="placeholder-ja">試合結果は公式Instagram確認後に掲載します。</div>
+    <!-- カレンダー -->
+    <div id="calendar-container">
+      <div style="padding:40px;text-align:center;color:var(--muted);">読み込み中…</div>
     </div>
 
   </div>
@@ -117,7 +99,6 @@
 <!-- FOOTER -->
 <footer id="site-footer"></footer>
 
-<script src="assets/js/schedule-filter.js"></script>
 <script src="assets/js/render-schedule.js"></script>
 <script src="assets/js/render-layout.js"></script>
 <script src="assets/js/main.js"></script>
