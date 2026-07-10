@@ -41,8 +41,8 @@ function restoreState() {
 
   currentSection = section;
 
-  document.querySelectorAll('.stab').forEach(function (btn) {
-  if (btn.dataset.section === section && btn.dataset.year === 'all') {
+ document.querySelectorAll('.stab').forEach(function (btn) {
+  if (btn.dataset.section === section) {
     btn.classList.add('active');
   } else {
     btn.classList.remove('active');
