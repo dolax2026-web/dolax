@@ -1,4 +1,4 @@
-  /* ===== YEAR BAR ===== */
+/* ===== YEAR BAR ===== */
   .year-bar { background: var(--navy-deep); border-bottom: 1px solid rgba(255,255,255,.08); }
   .year-bar-inner { display: flex; align-items: center; gap: 24px; padding: 18px 0; }
   .year-label { font-family: var(--font-en); font-size: 10px; letter-spacing: .2em; color: rgba(255,255,255,.35); white-space: nowrap; }
@@ -49,22 +49,30 @@
   }
   .sec-divider-line { flex: 1; height: 1px; background: rgba(20,35,63,.12); }
 
+  /* ===== GAME GRID ===== */
+  .game-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
   /* ===== GAME CARD (RESULT) ===== */
   .game-card {
     background: var(--paper);
-    border-left: 4px solid rgba(20,35,63,.15);
-    margin-bottom: 16px;
-    box-shadow: 0 1px 8px rgba(20,35,63,.07);
+    border: 1px solid var(--line);
+    border-top: 4px solid rgba(20,35,63,.15);
+    margin-bottom: 0;
+    box-shadow: 0 2px 12px rgba(20,35,63,.07);
   }
-  .game-card.result-win    { border-left-color: var(--gold); }
-  .game-card.result-lose   { border-left-color: rgba(20,35,63,.22); }
-  .game-card.result-draw   { border-left-color: var(--muted); }
-  .game-card.result-cancel { border-left-color: rgba(194,144,47,.4); }
+  .game-card.result-win    { border-top-color: var(--gold); }
+  .game-card.result-lose   { border-top-color: rgba(20,35,63,.22); }
+  .game-card.result-draw   { border-top-color: var(--muted); }
+  .game-card.result-cancel { border-top-color: rgba(194,144,47,.4); }
 
   /* card head */
-  .card-head { display: flex; justify-content: space-between; align-items: center; padding: 12px 24px; background: var(--cream); border-bottom: 1px solid var(--line); flex-wrap: wrap; gap: 8px; }
+  .card-head { display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: var(--cream); border-bottom: 1px solid var(--line); flex-wrap: wrap; gap: 8px; }
   .card-head-left  { display: flex; align-items: center; gap: 12px; }
-  .card-head-right { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .card-head-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
   .card-time { font-family: var(--font-en); font-size: 11px; letter-spacing: .06em; color: var(--navy); background: rgba(20,35,63,.07); padding: 3px 10px; }
   .card-tbd-info { font-size: 12px; color: var(--muted); letter-spacing: .04em; font-style: italic; }
   .card-tournament { font-size: 13px; color: var(--ink); }
@@ -90,46 +98,49 @@
   .card-team-badge--b { background: #c2902f; color: #1a1400; }
   .card-team-badge--c { background: #6b2c3b; color: #ffffff; }
 
-  /* card body 窶� result card */
-  .card-body { display: flex; align-items: center; padding: 28px 32px; gap: 16px; }
+  /* card body — result card */
+  .card-body { display: flex; align-items: center; padding: 32px 24px; gap: 12px; }
   .card-team { flex: 1; }
   .card-home { text-align: right; }
   .card-away { text-align: left; }
   .team-name { font-family: var(--font-body); font-weight: 700; font-size: 16px; color: var(--navy); line-height: 1.4; }
-  .card-du-logo { height: 56px; width: auto; object-fit: contain; display: inline-block; vertical-align: middle; max-width: 160px; }
+  .card-du-logo { height: 48px; width: auto; object-fit: contain; display: inline-block; vertical-align: middle; max-width: 140px; }
   .card-home .team-name { display: flex; justify-content: flex-end; align-items: center; gap: 10px; }
   .card-away .team-name { display: flex; justify-content: flex-start; align-items: center; }
   .card-du-name { font-family: var(--font-body); font-weight: 700; font-size: 16px; color: var(--navy); white-space: nowrap; }
   .team-sub { font-family: "Montserrat", sans-serif; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
-  .card-score { text-align: center; flex-shrink: 0; min-width: 180px; }
-  .score-row  { display: flex; align-items: center; justify-content: center; gap: 10px; }
-  .score-num  { font-family: var(--font-number); font-weight: 700; font-size: 64px; color: var(--navy); line-height: 1; letter-spacing: .01em; }
-  .score-sep  { font-family: var(--font-number); font-weight: 300; font-size: 36px; color: var(--line); }
-  .score-vs   { font-family: var(--font-number); font-weight: 700; font-size: 22px; letter-spacing: .14em; color: rgba(20,35,63,.2); }
-  .score-special { font-size: 18px; font-weight: 700; color: var(--navy); letter-spacing: .05em; }
+  .card-score { text-align: center; flex-shrink: 0; min-width: 140px; }
+  .score-row  { display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .score-num  { font-family: var(--font-number); font-weight: 700; font-size: 56px; color: var(--navy); line-height: 1; letter-spacing: .01em; }
+  .score-sep  { font-family: var(--font-number); font-weight: 300; font-size: 32px; color: var(--line); }
+  .score-vs   { font-family: var(--font-number); font-weight: 700; font-size: 20px; letter-spacing: .14em; color: rgba(20,35,63,.2); }
+  .score-special { font-size: 16px; font-weight: 700; color: var(--navy); letter-spacing: .05em; }
 
   /* card foot */
-  .card-foot { padding: 11px 24px; border-top: 1px solid var(--line); display: flex; align-items: center; gap: 16px; min-height: 44px; }
+  .card-foot { padding: 11px 20px; border-top: 1px solid var(--line); display: flex; align-items: center; gap: 16px; min-height: 44px; }
   .ig-link { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-en); font-weight: 600; font-size: 12px; letter-spacing: .08em; color: var(--gold); transition: color .2s; }
   .ig-link:hover { color: var(--navy); }
   .ig-link svg { width: 14px; height: 14px; }
 
   /* ===== SCHEDULED CARD ===== */
-  .sched-card { background: var(--paper); border-left: 4px solid rgba(194,144,47,.3); margin-bottom: 16px; box-shadow: 0 1px 8px rgba(20,35,63,.05); }
-  .sched-head { display: flex; justify-content: space-between; align-items: center; padding: 12px 24px; background: var(--cream); border-bottom: 1px solid var(--line); flex-wrap: wrap; gap: 8px; }
-  .sched-body { display: flex; align-items: center; padding: 24px 32px; gap: 16px; }
+  .sched-card { background: var(--paper); border: 1px solid var(--line); border-top: 4px solid rgba(194,144,47,.4); margin-bottom: 0; box-shadow: 0 2px 12px rgba(20,35,63,.05); }
+  .sched-head { display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: var(--cream); border-bottom: 1px solid var(--line); flex-wrap: wrap; gap: 8px; }
+  .sched-body { display: flex; align-items: center; padding: 32px 24px; gap: 12px; }
   .sched-body .card-team { flex: 1; }
   .sched-body .card-home { text-align: right; }
   .sched-body .card-home .team-name { display: flex; justify-content: flex-end; align-items: center; }
   .sched-body .card-away { text-align: left; }
   .sched-body .card-away .team-name { display: flex; justify-content: flex-start; align-items: center; }
-  .sched-body .card-score { flex-shrink: 0; min-width: 180px; text-align: center; }
+  .sched-body .card-score { flex-shrink: 0; min-width: 140px; text-align: center; }
 
   /* ===== SCHEDULE EMPTY STATE ===== */
   .placeholder-card { padding: 40px 32px; text-align: center; background: rgba(20,35,63,.03); border: 1px solid var(--line); }
   .placeholder-ja { font-size: 13px; color: var(--muted); letter-spacing: .04em; line-height: 1.7; }
 
-  /* ===== RESPONSIVE 768px ===== */
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .game-grid { grid-template-columns: 1fr; }
+  }
   @media (max-width: 768px) {
     .year-bar-inner { padding: 14px 0; gap: 16px; }
     .cat-btn { padding: 16px 10px; min-width: 72px; }
@@ -145,15 +156,15 @@
     .card-home .team-name, .card-away .team-name { justify-content: center; }
     .sched-body .card-home .team-name, .sched-body .card-away .team-name { justify-content: center; }
     .card-home { order: 1; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
-    .card-du-logo { height: 44px; }
+    .card-du-logo { height: 40px; }
     .card-score { order: 2; margin: 16px 0; min-width: auto; width: 100%; }
     .card-away  { order: 3; padding-top: 12px; border-top: 1px solid var(--line); }
-    .score-num  { font-size: 48px; }
+    .score-num  { font-size: 44px; }
     .team-name  { font-size: 15px; }
     .placeholder-card { padding: 36px 20px; }
   }
   @media (max-width: 480px) {
-    .score-num  { font-size: 40px; }
+    .score-num  { font-size: 36px; }
     .card-head  { flex-direction: column; align-items: center; gap: 6px; text-align: center; }
     .sched-head { flex-direction: column; align-items: center; gap: 6px; text-align: center; }
     .card-head-left  { justify-content: center; flex-wrap: wrap; }
