@@ -11,6 +11,13 @@
       .replace(/&/g, '&amp;').replace(/</g, '&lt;')
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
+   window.msgImgFail = function(img) {
+    img.style.display = 'none';
+    var ph = img.parentNode.querySelector('.photo-placeholder');
+    if (ph) ph.classList.remove('is-hidden');
+  };
+
+  function buildCard(m) {
 
   function buildCard(m) {
     var bodyHtml = (m.body || []).map(function (p) {
