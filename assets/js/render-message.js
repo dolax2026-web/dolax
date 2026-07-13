@@ -1,29 +1,23 @@
 /* ================================================================
    DOLAX – ご挨拶レンダラー  render-message.js
-   ================================================================
-   ▶ data/staff.json から部長・監督のご挨拶カードを生成します
-   ▶ 更新方法: data/staff.json を編集するだけで反映されます
    ================================================================ */
 (function () {
+  window.msgImgFail = function(img) {
+    img.style.display = 'none';
+    var ph = img.parentNode.querySelector('.photo-placeholder');
+    if (ph) ph.classList.remove('is-hidden');
+  };
 
   function esc(s) {
     return String(s || '')
       .replace(/&/g, '&amp;').replace(/</g, '&lt;')
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
-   window.msgImgFail = function(img) {
-    img.style.display = 'none';
-    var ph = img.parentNode.querySelector('.photo-placeholder');
-    if (ph) ph.classList.remove('is-hidden');
-  };
-
-  function buildCard(m) {
 
   function buildCard(m) {
     var bodyHtml = (m.body || []).map(function (p) {
       return '<p>' + esc(p) + '</p>';
     }).join('');
-
     return (
       '<div class="msg-card">' +
         '<div class="msg-photo-wrap">' +
@@ -70,7 +64,7 @@
       .then(function (r) { return r.json(); })
       .then(render)
       .catch(function (e) {
-        console.warn('[DOLAX] render-message.js: data/staff.json 読み込み失敗。npx serve で起動してください。', e);
+        console.warn('[DOLAX] render-message.js: data/staff.json 読み込み失敗。', e);
       });
   }
 
