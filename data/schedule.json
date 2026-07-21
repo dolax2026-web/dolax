@@ -1,6 +1,38 @@
 {
   "matches": [
     {
+  "id": "2026-f-sep4",
+  "year": "2026",
+  "team": "f",
+  "type": "scheduled",
+  "date": "2026.9.4",
+  "dayOfWeek": "Fri",
+  "time": "",
+  "venue": "",
+  "tournament": "",
+  "opponent": "対戦相手未定",
+  "homeScore": null,
+  "awayScore": null,
+  "result": "",
+  "instagramUrl": ""
+},
+    {
+  "id": "2026-f-sep14",
+  "year": "2026",
+  "team": "f",
+  "type": "scheduled",
+  "date": "2026.9.14",
+  "dayOfWeek": "Sun",
+  "time": "",
+  "venue": "",
+  "tournament": "",
+  "opponent": "対戦相手未定",
+  "homeScore": null,
+  "awayScore": null,
+  "result": "",
+  "instagramUrl": ""
+},
+    {
       "id": "2026-b-kinki-b",
       "year": "2026",
       "team": "b",
