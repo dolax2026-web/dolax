@@ -203,3 +203,41 @@ footer { background: var(--navy-deep); color: #cdd5e4; }
   .foot-grid { grid-template-columns: 1fr; gap: 24px; padding: 40px 0 24px; }
   .foot-soc { flex-wrap: wrap; gap: 10px; }
 }
+/* ===== INSTAGRAM ===== */
+.insta-sec { background: var(--navy-deep); padding: 80px 0; }
+.insta-inner { display: flex; align-items: center; gap: 80px; }
+.insta-left { flex: 1; }
+.insta-left .kicker { color: var(--gold-soft); }
+.insta-left .sec-title { color: #fff; }
+.insta-desc { font-size: 15px; color: #b4bdd4; line-height: 1.9; margin-bottom: 32px; }
+.insta-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: "Montserrat", sans-serif; font-weight: 700; font-size: 12px;
+  letter-spacing: .14em; text-transform: uppercase;
+  padding: 14px 28px; background: var(--gold); color: #1a1400;
+  text-decoration: none; transition: background .2s;
+}
+.insta-btn:hover { background: #e0b84a; }
+.insta-right { flex: 1; }
+.insta-mockup {
+  background: var(--navy-mid); border: 1px solid rgba(255,255,255,.1);
+  border-radius: 12px; padding: 20px; max-width: 320px; margin: 0 auto;
+}
+.insta-mockup-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.insta-avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--gold); color: #1a1400;
+  display: flex; align-items: center; justify-content: center;
+  font-family: "Montserrat", sans-serif; font-weight: 700; font-size: 13px;
+}
+.insta-name { font-family: "Montserrat", sans-serif; font-weight: 700; font-size: 13px; color: #fff; }
+.insta-sub { font-size: 11px; color: #6a7a9a; margin-top: 2px; }
+.insta-mockup-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+.insta-grid-item {
+  aspect-ratio: 1; background: rgba(255,255,255,.05);
+  border-radius: 2px;
+}
+@media(max-width:768px){
+  .insta-inner { flex-direction: column; gap: 40px; }
+  .insta-right { width: 100%; }
+}
