@@ -186,8 +186,7 @@
 
     /* 日付 */
     for(var d=1;d<=daysInMonth;d++){
-      var dd=d<10?'0'+d:String(d);
-      var dateStr=y+'.'+m+'.'+dd;
+      var dateStr=y+'.'+m+'.'+d;
       var dateNum=y*10000+m*100+d;
       var dow=new Date(y,m-1,d).getDay();
       var cc='cal-cell';
