@@ -1,72 +1,153 @@
-var currentSection = 'players';
-var currentYear = 'all';
+/* ================================================================
+   render-roster.js — data/players.json からロスターを動的生成
+   ================================================================ */
 
-function applyFilter() {
-  var vis = 0;
-  document.querySelectorAll('.player-card').forEach(function (card) {
-    var isStaff  = card.classList.contains('staff-card');
-    var isCoach  = card.classList.contains('coach-card');
-    var isPlayer = !isStaff && !isCoach;
-    var show = false;
-    if      (currentSection === 'players' && isPlayer) show = true;
-    else if (currentSection === 'staff'   && isStaff)  show = true;
-    else if (currentSection === 'coaches' && isCoach)  show = true;
-    card.classList.toggle('is-hidden', !show);
-    if (show) vis++;
-  });
-  document.querySelectorAll('.year-group-header').forEach(function (hdr) {
-    hdr.classList.toggle('is-hidden', currentSection !== 'players');
-  });
-  var visEl = document.getElementById('visCount');
-  if (visEl) visEl.textContent = vis;
-
-  var params = new URLSearchParams(window.location.search);
-  params.set('section', currentSection);
-  params.set('year', 'all');
-  history.replaceState(null, '', '?' + params.toString());
-}
-
-function switchTab(section, btn) {
-  currentSection = section;
-  currentYear = 'all';
-  document.querySelectorAll('.stab').forEach(function (t) { t.classList.remove('active'); });
-  btn.classList.add('active');
-  applyFilter();
-}
-
-function restoreState() {
-  var params = new URLSearchParams(window.location.search);
-  var section = params.get('section') || 'players';
-  var slug    = params.get('from') || '';
-
-  currentSection = section;
-
-  document.querySelectorAll('.stab').forEach(function (btn) {
-    if (btn.dataset.section === section) {
-      btn.classList.add('active');
-    } else {
-      btn.classList.remove('active');
-    }
-  });
-
-  applyFilter();
-
-  if (slug) {
-    setTimeout(function () {
-      var card = document.querySelector('a[href*="slug=' + slug + '"]');
-      if (card) {
-        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    }, 300);
+(function () {
+  function esc(s) {
+    return String(s || '')
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
-}
 
-document.querySelectorAll('.stab').forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    switchTab(btn.dataset.section, btn);
-  });
-});
+  function getSlug(p) {
+    if (p.slug && p.slug.trim() !== '') return p.slug;
+    if (p.number !== null && p.number !== undefined && p.number !== '') {
+      return 'grade' + p.grade + '-' + p.number;
+    }
+    if (p.section === 'staff' || p.section === 'coach' || p.section === 'coaches') {
+      var role = (p.staffRole || 'staff').toLowerCase();
+      var nameKey = (p.nameEn || p.name || '').replace(/\s+/g, '-').toLowerCase();
+      if (nameKey) return 'staff-grade' + p.grade + '-' + role + '-' + nameKey;
+    }
+    var nameKey2 = (p.nameEn || p.name || '').replace(/\s+/g, '-').toLowerCase();
+    if (nameKey2) return 'grade' + p.grade + '-' + nameKey2;
+    return '';
+  }
 
-window.addEventListener('rosterRendered', function () {
-  restoreState();
-});
+  function buildCard(p) {
+    var isStaff = p.section === 'staff';
+    var isCoach = p.section === 'coach' || p.section === 'coaches';
+    var slug = getSlug(p);
+    var hasDetail = !!slug;
+    var tag  = hasDetail ? 'a' : 'div';
+
+    var params = new URLSearchParams(window.location.search);
+    var section = params.get('section') || 'players';
+    var cls  = 'player-card' + (isStaff ? ' staff-card' : '') + (isCoach ? ' coach-card' : '') + (hasDetail ? ' has-detail' : '');
+    var href = hasDetail
+      ? ' href="players/detail.html?slug=' + esc(slug) + '&back_section=' + esc(section) + '&back_year=all"'
+      : '';
+
+    var roleBadge = (p.role && !isStaff && !isCoach)
+      ? '<div class="player-role leader">' + esc(p.role) + '</div>'
+      : '';
+
+    var staffBadge = (isStaff || isCoach)
+      ? '<div class="staff-role-badge">' + esc(p.staffRole) + '</div>'
+      : '';
+
+    var photoInner = p.photo
+      ? '<img src="' + esc(p.photo) + '" alt="' + esc(p.name) + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:1;" onerror="this.style.display=\'none\'">'
+      : '';
+
+    var numContent;
+    if (isStaff || isCoach) {
+      numContent = '<span>' + esc(p.staffRole) + '</span>';
+    } else if (p.number !== null && p.number !== undefined && p.number !== '') {
+      numContent = '#' + esc(p.number);
+    } else {
+      numContent = '<span>' + esc(p.grade) + '回生</span>';
+    }
+    var hasRole = !isStaff && !isCoach && p.role;
+    var numClass = 'player-num' + (hasRole ? '' : ' no-role');
+    var gradeLabel = p.grade + '回生';
+    var detailArrow = hasDetail
+      ? '<div class="player-detail-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg></div>'
+      : '';
+
+    return (
+      '<' + tag + ' class="' + cls + '"' + href + ' data-year="' + p.grade + '" data-slug="' + esc(slug) + '">' +
+        '<div class="player-photo">' +
+          roleBadge +
+          photoInner +
+          '<div class="img-slot light">' +
+            '<span class="slot-label">' + esc(p.name) + '</span>' +
+          '</div>' +
+          staffBadge +
+        '</div>' +
+        '<div class="' + numClass + '">' + numContent + '</div>' +
+        '<div class="player-info">' +
+          '<div class="player-pos">' + esc(gradeLabel) + '</div>' +
+          '<div class="player-name">' + esc(p.name) + '</div>' +
+          detailArrow +
+        '</div>' +
+      '</' + tag + '>'
+    );
+  }
+
+  function render(players) {
+    var grid = document.getElementById('rosterFullGrid');
+    if (!grid) return;
+
+    var grades = [4, 3, 2, 1];
+    var html = '';
+
+    grades.forEach(function (g) {
+      var group = players.filter(function (p) { return p.grade === g && p.section === 'player'; });
+      if (group.length === 0) return;
+      var count = group.length;
+      html +=
+        '<div class="year-group-header" data-year="' + g + '">' +
+          '<span class="yh-label">' + g + '回生</span>' +
+          '<span class="yh-count">' + count + '名</span>' +
+        '</div>';
+      group.forEach(function (p) { html += buildCard(p); });
+    });
+
+    /* スタッフ */
+    var staffs = players.filter(function (p) { return p.section === 'staff'; });
+    staffs.forEach(function (p) { html += buildCard(p); });
+
+    /* コーチ */
+    var coaches = players.filter(function (p) { return p.section === 'coach' || p.section === 'coaches'; });
+    coaches.forEach(function (p) { html += buildCard(p); });
+
+    grid.innerHTML = html;
+
+    var playerCount = players.filter(function (p) {
+      return p.section === 'player';
+    }).length;
+    var tcEl = document.getElementById('totalCount');
+    if (tcEl) tcEl.textContent = playerCount;
+
+    window.dispatchEvent(new Event('rosterRendered'));
+  }
+
+  function loadPlayers() {
+    fetch('data/players.json')
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
+      .then(function (data) {
+        var players = Array.isArray(data) ? data : (data.players || []);
+        render(players);
+      })
+      .catch(function () {
+        var grid = document.getElementById('rosterFullGrid');
+        if (grid) {
+          grid.innerHTML =
+            '<div class="roster-load-error">' +
+              '<div class="roster-load-error-title">LOAD ERROR</div>' +
+              '<div class="roster-load-error-sub">データの読み込みに失敗しました。</div>' +
+            '</div>';
+        }
+      });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadPlayers);
+  } else {
+    loadPlayers();
+  }
+})();
