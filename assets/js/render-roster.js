@@ -36,7 +36,7 @@ function switchTab(section, btn) {
 
 function restoreState() {
   var params = new URLSearchParams(window.location.search);
-  var section = params.get('section') || params.get('back_section') || 'players';
+  var section = params.get('section') || 'players';
   var slug    = params.get('from') || '';
 
   currentSection = section;
