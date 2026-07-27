@@ -163,3 +163,7 @@
   }
 .cal-event--f { background: #2e7d32; color: #fff; }
 .list-team-f { background: #2e7d32; color: #fff; }
+.cal-event--fa { background: #1a6b3c; color: #fff; }
+.cal-event--fb { background: #2e7d32; color: #fff; opacity: .8; }
+.list-team-fa { background: #1a6b3c; color: #fff; }
+.list-team-fb { background: #2e7d32; color: #fff; }
