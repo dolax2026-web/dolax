@@ -1849,7 +1849,7 @@
       "comment": "",
       "profileUrl": "",
       "photo": "assets/staff-haraga-mako.jpg"
-    },    },
+    },    
     {
       "name": "安藤碧輝",
       "number": "48",
@@ -1983,7 +1983,7 @@
       "section": "player",
       "role": "",
       "slug": "grade1-58",
-      "nameEn": "okamoto harumi"
+      "nameEn": "okamoto harumi",
       "position": "MF",
       "school": "名古屋市立菊里高校",
       "hometown": "愛知県",
@@ -2057,8 +2057,8 @@
       "weight": "",
       "handedness": "",
       "comment": "卓球部エース",
-      "profileUrl": "assets/grade1-67.jpg",
-      "photo": ""
+      "profileUrl": "",
+      "photo": "assets/grade1-67.jpg"
     },
     {
       "name": "酒井昌広",
@@ -2370,8 +2370,8 @@
       "experienceSports": "サッカー",
       "height": "",
       "weight": "",
-      "handedness": "ジャムおじさん",
-      "comment": "",
+      "handedness": "",
+      "comment": "ジャムおじさん",
       "profileUrl": "",
       "photo": "assets/grade1-40.jpg"
     },
@@ -2384,7 +2384,7 @@
       "slug": "grade1-81",
       "nameEn": "morisaki takenao",
       "position": "MF",
-      "school": "菊里高校　",
+      "school": "菊里高校",
       "hometown": "愛知県",  
       "faculty": "理工学部",
       "department": "機械システム工学科",
@@ -2472,13 +2472,13 @@
       "hometown": "大阪府",  
       "faculty": "政策学部",
       "department": "政策学科国際専修コース",
-      "experienceSports": " 陸上",
+      "experienceSports": "陸上",
       "height": "",
       "weight": "",
       "handedness": "",
       "comment": "日焼け止め必須",
-      "profileUrl": "assets/grade1-100.jpg",
-      "photo": ""
+      "profileUrl": "",
+      "photo": "assets/grade1-100.jpg"
     },
     {
       "name": "渡辺和貴",
@@ -2712,5 +2712,4 @@
       "photo": "assets/staff-nakai-rin.jpg"
     }
   ]
-}
 
