@@ -1849,7 +1849,7 @@
       "comment": "",
       "profileUrl": "",
       "photo": "assets/staff-haraga-mako.jpg"
-    },
+    },    },
     {
       "name": "安藤碧輝",
       "number": "48",
@@ -1869,7 +1869,7 @@
       "handedness": "",
       "comment": "湘南スタイル",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-48.jpg"
     },
     {
       "name": "伊東英剛",
@@ -1890,7 +1890,7 @@
       "handedness": "",
       "comment": "仰星プロップ",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-85.jpg"
     },
     {
       "name": "宇留野創太",
@@ -1911,7 +1911,7 @@
       "handedness": "",
       "comment": "ハイスぺとーさん",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-84.jpg"
     },
     {
       "name": "榎本大地",
@@ -1932,7 +1932,7 @@
       "handedness": "",
       "comment": "股関節",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-91.jpg"
     },
     {
       "name": "大林慧",
@@ -1953,7 +1953,7 @@
       "handedness": "",
       "comment": "未完の大器",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-65.jpg"
     },
     {
       "name": "岡本健太郎",
@@ -1974,7 +1974,7 @@
       "handedness": "",
       "comment": "超大型巨人",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-83.jpg"
     },
     {
       "name": "岡本遥海",
@@ -1995,7 +1995,7 @@
       "handedness": "",
       "comment": "ルイージ",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-58.jpg"
     },
     {
       "name": "桟駿士",
@@ -2016,7 +2016,7 @@
       "handedness": "",
       "comment": "まーちゃん",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-80.jpg"
     },
     {
       "name": "川井康生",
@@ -2037,7 +2037,7 @@
       "handedness": "",
       "comment": "標準語",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-96.jpg"
     },
     {
       "name": "五藤佑磨",
@@ -2057,7 +2057,7 @@
       "weight": "",
       "handedness": "",
       "comment": "卓球部エース",
-      "profileUrl": "",
+      "profileUrl": "assets/grade1-67.jpg",
       "photo": ""
     },
     {
@@ -2079,7 +2079,7 @@
       "handedness": "",
       "comment": "超朝活",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-46.jpg"
     },
     {
       "name": "佐々木涼真",
@@ -2100,7 +2100,7 @@
       "handedness": "",
       "comment": "エヴァ成金",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-69.jpg"
     },
     {
       "name": "竹中奏太朗",
@@ -2121,7 +2121,7 @@
       "handedness": "",
       "comment": "存在感",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-52.jpg"
     },
     {
       "name": "竹原順正",
@@ -2142,7 +2142,7 @@
       "handedness": "",
       "comment": "KY",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-54.jpg"
     },
     {
       "name": "土生凌太郎",
@@ -2163,7 +2163,7 @@
       "handedness": "",
       "comment": "ゲラ",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-101.jpg"
     },
     {
       "name": "中川俊希",
@@ -2171,7 +2171,7 @@
       "grade": 1,
       "section": "player",
       "role": "",
-      "slug": "grade1-64",
+      "slug": "grade1-61",
       "nameEn": "nakagawa toshiki",
       "position": "DF",
       "school": "津高校",
@@ -2184,7 +2184,7 @@
       "handedness": "",
       "comment": "ガチ勢",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-61.jpg"
     },
     {
       "name": "中田絢大",
@@ -2205,7 +2205,7 @@
       "handedness": "",
       "comment": "グルゥゥ",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-64.jpg"
     },
     {
       "name": "中村将悟",
@@ -2226,7 +2226,7 @@
       "handedness": "",
       "comment": "俺に出せ",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-56.jpg"
     },
     {
       "name": "中村志龍",
@@ -2247,7 +2247,7 @@
       "handedness": "",
       "comment": "だりー男",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-62.jpg"
     },
     {
       "name": "西田雅志",
@@ -2268,7 +2268,7 @@
       "handedness": "",
       "comment": "片手",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-94.jpg"
     },
     {
       "name": "日高将汰",
@@ -2289,7 +2289,7 @@
       "handedness": "",
       "comment": "大学デビュー失敗",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-111.jpg"
     },
     {
       "name": "原健志",
@@ -2310,7 +2310,7 @@
       "handedness": "",
       "comment": "人面犬",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-53.jpg"
     },
     {
       "name": "松岡怜志",
@@ -2331,7 +2331,7 @@
       "handedness": "",
       "comment": "サボリ魔",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-38.jpg"
     },
     {
       "name": "水谷淳志",
@@ -2352,7 +2352,7 @@
       "handedness": "",
       "comment": "カリッカリ",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-73.jpg"
     },
     {
       "name": "守屋泰也",
@@ -2373,7 +2373,7 @@
       "handedness": "ジャムおじさん",
       "comment": "",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-40.jpg"
     },
     {
       "name": "森崎岳尚",
@@ -2394,7 +2394,7 @@
       "handedness": "",
       "comment": "浴衣パジャマ",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-81.jpg"
     },
     {
       "name": "森本拓真",
@@ -2415,7 +2415,7 @@
       "handedness": "",
       "comment": "むっつりがっつしDF",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-93.jpg"
     },
     {
       "name": "山田悠介",
@@ -2436,7 +2436,7 @@
       "handedness": "",
       "comment": "ニヤニヤ",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-97.jpg"
     },
     {
       "name": "山本晃大",
@@ -2457,7 +2457,7 @@
       "handedness": "",
       "comment": "ギャラン",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-123.jpg"
     },
     {
       "name": "吉見聡一郎",
@@ -2477,7 +2477,7 @@
       "weight": "",
       "handedness": "",
       "comment": "日焼け止め必須",
-      "profileUrl": "",
+      "profileUrl": "assets/grade1-100.jpg",
       "photo": ""
     },
     {
@@ -2499,7 +2499,7 @@
       "handedness": "",
       "comment": "ちびごり",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-76.jpg"
     },
     {
       "name": "脇坂昇輝",
@@ -2520,7 +2520,7 @@
       "handedness": "",
       "comment": "ムキムキ天才レフティー",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/grade1-70.jpg"
         },
     {
       "name": "石本有香",
@@ -2541,7 +2541,7 @@
       "handedness": "",
       "comment": "",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/staff-ishimoto-yuka.jpg"
     }, 
         {
       "name": "磯野るい",
@@ -2562,7 +2562,7 @@
       "handedness": "",
       "comment": "",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/staff-isono-rui.jpg"
     }, 
         {
       "name": "絹本奈緒",
@@ -2583,7 +2583,7 @@
       "handedness": "",
       "comment": "",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/staff-kinumoto-nao.jpg"
     }, 
       {
       "name": "下野美咲",
@@ -2604,7 +2604,7 @@
       "handedness": "",
       "comment": "",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/staff-shimono-misaki.jpg"
     }, 
         {
       "name": "田中絢",
@@ -2625,7 +2625,7 @@
       "handedness": "",
       "comment": "",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/staff-tanaka-aya.jpg"
     }, 
       {
       "name": "田中陽菜",
@@ -2646,7 +2646,7 @@
       "handedness": "",
       "comment": "",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/staff-tanaka-hina.jpg"
     }, 
       {
       "name": "近重明優",
@@ -2667,7 +2667,7 @@
       "handedness": "",
       "comment": "",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/staff-chikashige-mei.jpg"
     }, 
       {
       "name": "塚本理那",
@@ -2688,7 +2688,7 @@
       "handedness": "",
       "comment": "",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/staff-tsukamoto-rina.jpg"
     }, 
       {
       "name": "中居凛",
@@ -2709,7 +2709,8 @@
       "handedness": "",
       "comment": "",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/staff-nakai-rin.jpg"
     }
   ]
 }
+
