@@ -19,7 +19,7 @@
         "",
         ""
       ],
-      "hometown": "compton",
+      "hometown": "京都府",
       "height": "",
       "weight": "",
       "handedness": "",
@@ -461,7 +461,7 @@
       "staffRole": "AS",
       "faculty": "理工学部 ",
       "department": "情報システム学科",
-      "slug": "",
+      "slug": "staff-endo-itsuki",
       "nameEn": "endo itsuki",
       "position": "",
       "school": "北海道帝国高等学校",
@@ -471,7 +471,7 @@
       "handedness": "",
       "comment": "",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/staff-endo-itsuki.jpg"
     },
     {
       "name": "植田 舞",
@@ -481,7 +481,7 @@
       "staffRole": "MG",
       "faculty": "",
       "department": "",
-      "slug": "",
+      "slug": "staff-ueda-mai",
       "nameEn": "ueda mai",
       "position": "",
       "school": "六甲アイランド学院高等学校",
@@ -501,7 +501,7 @@
       "staffRole": "TR",
       "faculty": "政策学部",
       "department": "政策学科",
-      "slug": "",
+      "slug": "staff-tsumori-rana",
       "nameEn": "tsumori rana",
       "position": "",
       "school": "同志社国際高等学校",
@@ -511,7 +511,7 @@
       "handedness": "",
       "comment": "",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/staff-tsumori-rana.jpg"
     },
     {
       "name": "三瓶 未裕",
@@ -521,7 +521,7 @@
       "staffRole": "TR",
       "faculty": "法学部",
       "department": "政治学科",
-      "slug": "",
+      "slug": "staff-sanpei-miyu",
       "nameEn": "sanpei miyu",
       "position": "",
       "school": "同志社国際高等学校",
@@ -531,7 +531,7 @@
       "handedness": "",
       "comment": "",
       "profileUrl": "",
-      "photo": ""
+      "photo": "assets/staff-sanpei-miyu-jpg"
     },
     {
       "name": "西浦 羽流",
