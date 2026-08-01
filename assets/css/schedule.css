@@ -137,9 +137,10 @@
   .card-date{font-family:var(--font-en);font-weight:500;font-size:13px;color:var(--navy);letter-spacing:.03em;}
 
   /* ===== RESPONSIVE ===== */
-  @media(max-width:768px){
-    .cat-btn{padding:14px 10px;min-width:72px;}
-    .cat-btn .cat-en{font-size:11px;}
+@media(max-width:768px){
+    .cat-btn{padding:14px 4px;min-width:0;}
+    .cat-btn .cat-en{font-size:9px;letter-spacing:.06em;}
+    .cat-btn .cat-ja{font-size:9px;}
     .game-main{padding:0 0 64px;}
     #calendar-container{padding:20px 0;}
     .cal-cell{min-height:60px;padding:4px 3px;}
