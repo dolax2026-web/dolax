@@ -1,5 +1,22 @@
 {
-  "matches": [   {
+  "matches": [ 
+     {
+      "id": "2026-c-nanzan-b",
+      "year": "2026",
+      "team": "c",
+      "type": "result",
+      "date": "2026.8.2",
+      "dayOfWeek": "Sun",
+      "time": "15:30 FO",
+      "venue": "久御山町木津川河川敷運動場",
+      "tournament": "",
+      "opponent": "南山大学B",
+      "homeScore": 5,
+      "awayScore": 6,
+      "result": "lose",
+      "instagramUrl": ""
+    },
+    {
   "id": "2026-b-kinki-b",
   "year": "2026",
   "team": "b",
