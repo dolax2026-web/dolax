@@ -188,14 +188,3 @@
   .hero h1    { font-size: 26px; }
   .hero-slide { width: 90vw; }
 }
-.hero-goals{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
-.hero-goal{
-  font-family:var(--font-body);font-weight:700;font-size:13px;
-  letter-spacing:.08em;color:#fff;
-  background:rgba(194,144,47,.9);
-  padding:6px 16px;
-  border-radius:2px;
-}
-@media(max-width:768px){
-  .hero-goal{font-size:12px;padding:5px 12px;}
-}
