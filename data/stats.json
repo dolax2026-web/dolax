@@ -10,10 +10,10 @@
   },
   "teamStats": [
     { "value": "1部",  "suffix": "",       "label": "関西リーグ所属", "countUp": false },
-    { "value": "130",  "suffix": "+",      "label": "部員数",         "countUp": true  },
+    { "value": "120",  "suffix": "+",      "label": "部員数",         "countUp": true  },
     { "value": "6",    "suffix": "回",     "label": "関西準優勝",     "countUp": true  },
-    { "value": "POL",  "suffix": " 獲得",  "label": "今季目標",       "countUp": false }
-  ],
+    { "value": "関西制覇",  "suffix": " / POL 獲得",  "label": "今季目標",       "countUp": false }  ],
+  
   "partnerStats": [
     { "prefix": "",   "value": "20",    "suffix": "+",  "label": "年間試合数",     "en": "ANNUAL GAMES"    },
     { "prefix": "約", "value": "1,800", "suffix": "人", "label": "年間来場者数",   "en": "ANNUAL VISITORS" },
