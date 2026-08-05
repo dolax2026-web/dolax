@@ -33,9 +33,9 @@
 
     /* STATSバー */
     var gridHtml = (stats.teamStats || []).map(function (s) {
-      var numHtml = s.countUp
+     var numHtml = s.countUp
         ? '<span class="js-count-up" data-target="' + esc(String(s.value)) + '">' + esc(String(s.value)) + '</span>'
-        : esc(String(s.value));
+        : esc(String(s.value)).replace(/&lt;br&gt;/g, '<br>');
       return (
         '<div class="stat">' +
           '<div class="num">' + numHtml + '<small>' + esc(s.suffix) + '</small></div>' +
