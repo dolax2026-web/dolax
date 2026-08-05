@@ -338,3 +338,10 @@ html, body { overflow-x: hidden; }
 @media (max-width: 375px) {
   .stats-grid { grid-template-columns: 1fr 1fr; }
 }
+.stats-grid .stat:last-child .num{
+  font-size:34px;
+  line-height:1.25;
+}
+@media(max-width:768px){
+  .stats-grid .stat:last-child .num{font-size:26px;}
+}
