@@ -10,7 +10,7 @@
   },
   "teamStats": [
     { "value": "1部",  "suffix": "",       "label": "関西リーグ所属", "countUp": false },
-    { "value": "130",  "suffix": "+",      "label": "部員数",         "countUp": true  },
+    { "value": "120",  "suffix": "+",      "label": "部員数",         "countUp": true  },
     { "value": "6",    "suffix": "回",     "label": "関西準優勝",     "countUp": true  },
     { "value": "関西制覇<br>POL獲得",  "suffix": "",  "label": "今季目標",  "countUp": false }
   ],
@@ -26,16 +26,16 @@
     { "value": "5",    "suffix": "社", "label": "スポンサー企業","en": "PARTNERS",         "countUp": true,  "separator": false }
   ],
   "instagramStats": {
-    "label": "2026年7月時点｜過去90日間の合計",
+    "label": "2026年8月時点｜過去90日間の合計",
     "description": "DOLAXは、選手の想いやチームの挑戦を発信し、部員・OB・保護者・新入生・地域との接点を広げています。",
     "footnote": "Instagramを通じて、スポンサー企業の認知拡大にもつながる発信基盤を築いています。",
     "items": [
-      { "name": "閲覧数",             "prefix": "約", "value": "71",   "suffix": "万回", "countUp": true },
-      { "name": "リーチ",             "prefix": "約", "value": "3.1",  "suffix": "万人", "countUp": true, "decimals": 1 },
-      { "name": "プロフィールアクセス", "prefix": "約", "value": "2.9",  "suffix": "万件", "countUp": true, "decimals": 1 },
-      { "name": "外部リンクタップ",    "value": "711", "suffix": "件",  "countUp": true,  "note": "+42.2%" },
+      { "name": "閲覧数",             "prefix": "約", "value": "113",   "suffix": "万回", "countUp": true },
+      { "name": "リーチ",             "prefix": "約", "value": "3.8",  "suffix": "万人", "countUp": true, "decimals": 1 },
+      { "name": "プロフィールアクセス", "prefix": "約", "value": "3.5",  "suffix": "万件", "countUp": true, "decimals": 1 },
+      { "name": "外部リンクタップ",    "value": "921", "suffix": "件",  "countUp": true,  "note": "+42.2%" },
       { "name": "フォロワー外閲覧",    "value": "50.8","suffix": "%",   "countUp": true,  "decimals": 1 },
-      { "name": "インタラクション",    "value": "4443","suffix": "件",  "countUp": true,  "separator": true }
+      { "name": "インタラクション",    "value": "7275","suffix": "件",  "countUp": true,  "separator": true }
     ]
   }
 }
