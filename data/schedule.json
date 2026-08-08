@@ -1,5 +1,21 @@
 {
   "matches": [ 
+    {
+  "id": "2026-a-ritumeikan-a",
+  "year": "2026",
+  "team": "a",
+  "type": "scheduled",
+  "date": "2026.8.23",
+  "dayOfWeek": "Sun",
+  "time": "9:00 FO",
+  "venue": "鶴見緑地スタジアム",
+  "tournament": "",
+  "opponent": "立命館大学",
+  "homeScore": null,
+  "awayScore": null,
+  "result": "",
+  "instagramUrl": ""
+},
      {
       "id": "2026-c-nanzan-b",
       "year": "2026",
@@ -20,16 +36,16 @@
   "id": "2026-b-kinki-b",
   "year": "2026",
   "team": "b",
-  "type": "scheduled",
+  "type": "result",
   "date": "2026.8.8",
   "dayOfWeek": "Sut",
   "time": "11:00 FO",
   "venue": "同志社大学ラグビー場",
   "tournament": "",
   "opponent": "近畿大学B",
-  "homeScore": null,
-  "awayScore": null,
-  "result": "",
+  "homeScore": 5,
+  "awayScore": 4,
+  "result": "win",
   "instagramUrl": ""
 },
     {
