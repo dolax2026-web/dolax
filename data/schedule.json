@@ -1,5 +1,37 @@
 {
   "matches": [ 
+     {
+  "id": "2026-a-kyoto-a",
+  "year": "2026",
+  "team": "a",
+  "type": "scheduled",
+  "date": "2026.10.12",
+  "dayOfWeek": "mon",
+  "time": "12:00 FO",
+  "venue": "鶴見緑地第2球技場",
+  "tournament": "",
+  "opponent": "京都大学",
+  "homeScore": null,
+  "awayScore": null,
+  "result": "",
+  "instagramUrl": ""
+},
+     {
+  "id": "2026-a-kanseigakuin-a",
+  "year": "2026",
+  "team": "a",
+  "type": "scheduled",
+  "date": "2026.9.13",
+  "dayOfWeek": "Sun",
+  "time": "8:45 FO",
+  "venue": "鶴見緑地第２球技場",
+  "tournament": "",
+  "opponent": "関西学院大学",
+  "homeScore": null,
+  "awayScore": null,
+  "result": "",
+  "instagramUrl": ""
+},
     {
   "id": "2026-a-ritumeikan-a",
   "year": "2026",
