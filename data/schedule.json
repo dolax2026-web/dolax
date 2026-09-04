@@ -91,9 +91,9 @@
   "venue": "",
   "tournament": "",
   "opponent": "大阪経済大学",
-  "homeScore": null,
-  "awayScore": null,
-  "result": "",
+  "homeScore": 4,
+  "awayScore": 3,
+  "result": "win",
   "instagramUrl": ""
 },
         {
@@ -107,9 +107,9 @@
   "venue": "",
   "tournament": "",
   "opponent": "大阪公立大学",
-  "homeScore": null,
-  "awayScore": null,
-  "result": "",
+  "homeScore": 3,
+  "awayScore": 0,
+  "result": "win",
   "instagramUrl": ""
 },
     {
@@ -123,9 +123,9 @@
   "venue": "",
   "tournament": "",
   "opponent": "神戸学院大学",
-  "homeScore": null,
-  "awayScore": null,
-  "result": "",
+  "homeScore": 5,
+  "awayScore": 3,
+  "result": "win",
   "instagramUrl": ""
 },
         {
@@ -139,9 +139,9 @@
   "venue": "",
   "tournament": "",
   "opponent": "近畿大学",
-  "homeScore": null,
-  "awayScore": null,
-  "result": "",
+  "homeScore": 3,
+  "awayScore": 3,
+  "result": "draw",
   "instagramUrl": ""
 },
 
