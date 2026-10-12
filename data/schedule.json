@@ -75,9 +75,9 @@
   "venue": "鶴見緑地第2球技場",
   "tournament": "",
   "opponent": "京都大学",
-  "homeScore": null,
-  "awayScore": null,
-  "result": "",
+  "homeScore": 4,
+  "awayScore": 2,
+  "result": "win",
   "instagramUrl": ""
 },
      {
