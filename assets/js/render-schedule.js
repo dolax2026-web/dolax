@@ -250,7 +250,11 @@
     _matches=matches;
     var monthSet={};
     matches.forEach(function(m){ var p=parseDateParts(m.date); if(!p)return; var key=p.y+'-'+p.m; monthSet[key]=true; });
-    _months=Object.keys(monthSet).sort();
+    _months=Object.keys(monthSet).sort(function(a,b){
+  var ma=parseInt(a.split('-')[1],10);
+  var mb=parseInt(b.split('-')[1],10);
+  return (ma+8)%12-(mb+8)%12 || a.localeCompare(b);
+});
     if(!_months.length){ container.innerHTML='<div style="padding:40px;text-align:center;">試合データがありません</div>'; return; }
     var today=getToday();
     var tY=Math.floor(today/10000), tM=Math.floor((today%10000)/100);
