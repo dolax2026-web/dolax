@@ -1,5 +1,21 @@
 {
   "matches": [ 
+        {
+  "id": "2026-a-koube-a",
+  "year": "2026",
+  "team": "a",
+  "type": "schedule",
+  "date": "2026.10.24",
+  "dayOfWeek": "sat",
+  "time": "9:00 FO",
+  "venue": "鶴見緑地スタジアム",
+  "tournament": "",
+  "opponent": "神戸大学",
+  "homeScore":null ,
+  "awayScore":null ,
+  "result": "",
+  "instagramUrl": ""
+},
            {
   "id": "2026-fb-kanseigakuin-b",
   "year": "2026",
