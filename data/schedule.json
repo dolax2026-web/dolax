@@ -1,19 +1,35 @@
 {
   "matches": [ 
         {
-  "id": "2026-a-koube-a",
+  "id": "2026-a-kanseigakuin-a",
   "year": "2026",
   "team": "a",
   "type": "schedule",
+  "date": "2026.11.1",
+  "dayOfWeek": "sun",
+  "time": "11:00 FO",
+  "venue": "たけびしスタジアム京都",
+  "tournament": "",
+  "opponent": "関西学院大学",
+  "homeScore":null ,
+  "awayScore":null ,
+  "result": "",
+  "instagramUrl": ""
+},
+        {
+  "id": "2026-a-koube-a",
+  "year": "2026",
+  "team": "a",
+  "type": "result",
   "date": "2026.10.24",
   "dayOfWeek": "sat",
   "time": "9:00 FO",
   "venue": "鶴見緑地スタジアム",
   "tournament": "",
   "opponent": "神戸大学",
-  "homeScore":null ,
-  "awayScore":null ,
-  "result": "",
+  "homeScore":5 ,
+  "awayScore":4 ,
+  "result": "win",
   "instagramUrl": ""
 },
            {
